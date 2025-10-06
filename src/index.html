@@ -1,13 +1,41 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>LatasFrontEnd</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <app-root></app-root>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Las Latas de Martín</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="ico.ico" />
+  </head>
+  <body>
+    <div class="barraSuperior">
+      <img src="Imagenes/jpg.png" alt="Icono de la página" class="logo" />
+      <div class="Menu">
+        <button>Inicio</button>
+        <button>Latas</button>
+        <button>Estadisticas</button>
+        <li><a href=""></a></li>
+        <li class="dropdown">
+          <a href="#">Nuevo ▾</a>
+          <ul class="dropdown-content">
+            <li><a href="">Lata</a></li>
+            <li><a href="">Edicion Especial</a></li>
+            <li><a href="">Especialidad</a></li>
+          </ul>
+        </li>
+      </div>
+      <div class="Buscador">
+        <input type="text" placeholder="Buscar..." />
+        <input type="submit" value="Buscar" />
+      </div>
+    </div>
+    <app-root></app-root>
+    <div class="footer">
+      <p>Las Latas de Martín</p>
+      <div class="instagram">
+        <i class="bi bi-instagram"></i>
+        <a href="https://www.instagram.com/laslatasdemartin/">Instagram</a>
+      </div>
+    </div>
+  </body>
 </html>
