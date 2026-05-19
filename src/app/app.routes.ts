@@ -5,13 +5,14 @@ import { Listado } from './pages/listado/listado';
 import { Lata } from './pages/lata/lata';
 import { Estadistica } from './pages/estadistica/estadistica';
 import { NuevaLata } from './pages/nueva-lata/nueva-lata';
-import { NuevaMarca } from './pages/nueva-marca/nueva-marca';
-import { NuevoTamano } from './pages/nuevo-tamano/nuevo-tamano';
-import { NuevoSabor } from './pages/nuevo-sabor/nuevo-sabor';
-import { NuevaEspecialidad } from './pages/nueva-especialidad/nueva-especialidad';
-import { NuevaEdEspecial } from './pages/nueva-ed-especial/nueva-ed-especial';
-import { NuevoPais } from './pages/nuevo-pais/nuevo-pais';
-import { NuevaCaja } from './pages/nueva-caja/nueva-caja';
+import { Cajas } from './pages/cajas/cajas';
+import { EdicionesEspeciales } from './pages/ediciones-especiales/ediciones-especiales';
+import { Especialidades } from './pages/especialidades/especialidades';
+import { Marcas } from './pages/marcas/marcas';
+import { Paises } from './pages/paises/paises';
+import { Tamanios } from './pages/tamanios/tamanios';
+import { Sabores } from './pages/sabores/sabores';
+
 
 export const routes: Routes = [
     {
@@ -27,13 +28,13 @@ export const routes: Routes = [
     { path: 'lata', component: Lata },
 
     { path: 'estadistica', component: Estadistica },
-    
+
     { path: 'NuevaLata', component: NuevaLata },
-    { path: 'NuevaMarca', component: NuevaMarca },
-    { path: 'NuevoTamano', component: NuevoTamano },
-    { path: 'NuevoSabor', component: NuevoSabor },
-    { path: 'NuevaEspecialidad', component: NuevaEspecialidad },
-    { path: 'NuevaEdicionEspecial', component: NuevaEdEspecial },
-    { path: 'NuevoPais', component: NuevoPais },
-    { path: 'NuevaCaja', component: NuevaCaja },
+    { path: 'Marcas', component: Marcas },
+    { path: 'Tamaños', component: Tamanios },
+    { path: 'Sabores', component: Sabores },
+    { path: 'Especialidades', component: Especialidades },
+    { path: 'EdicionesEspeciales', component: EdicionesEspeciales },
+    { path: 'Paises', component: Paises },
+    { path: 'Cajas', component: Cajas },
 ];
