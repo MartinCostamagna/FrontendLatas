@@ -1,3 +1,42 @@
 <main>
   <router-outlet></router-outlet>
 </main>
+<div class="barraSuperior">
+  <img src="Imagenes/jpg.png" alt="Icono de la página" class="logo" routerLink="/login" />
+
+  <div class="Menu">
+    <a routerLink="/inicio">Inicio</a>
+    <a routerLink="/latas">Latas</a>
+    <div class="dropdown">
+      <a href="#">Nuevo ▾</a>
+      <ul class="dropdown-content">
+        <li><a routerLink="/NuevaLata">Lata</a></li>
+        <li><a routerLink="/Cajas">Caja</a></li>
+        <li><a routerLink="/Marcas">Marca</a></li>
+        <li><a routerLink="/Tamaños">Tamaño</a></li>
+        <li><a routerLink="/Sabores">Sabor</a></li>
+        <li><a routerLink="/Especialidades">Especialidad</a></li>
+        <li><a routerLink="/EdicionesEspeciales">Edicion Especial</a></li>
+        <li><a routerLink="/Paises">Pais</a></li>
+        <li><a routerLink="/Años">Año</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="Buscador">
+    <input type="text" placeholder="Buscar..." class="input-buscar" />
+    <input type="submit" value="Buscar" class="btn-buscar" />
+  </div>
+</div>
+
+<main class="contenido-principal">
+  <router-outlet></router-outlet>
+</main>
+
+<div class="footer">
+  <p>Las Latas de Martín</p>
+  <div class="instagram">
+    <i class="bi bi-instagram"></i>
+    <a href="https://www.instagram.com/laslatasdemartin/">Instagram</a>
+  </div>
+</div>

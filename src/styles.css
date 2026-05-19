@@ -1,20 +1,42 @@
 body {
    margin: 0;
+   background-color: #ffffff;
+   font-family: Arial, sans-serif;
+   display: flex;
+   flex-direction: column;
+   min-height: 100vh;
 }
 
-.barraSuperior{
+.barraSuperior {
    display: flex;
    flex-direction: row;
+   align-items: center;
+   justify-content: space-between;
    background-color: #0000FF;
    width: 100%;
    height: 110px;
    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+   box-sizing: border-box;
+   padding: 0 20px;
 }
 
-.logo{
+.logo {
    width: 59px;
    height: 107px;
-   margin-left: 10px;
+}
+
+.Menu {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-items: center;
+   gap: 10px;
+   margin-left: 30px;
+   margin-right: auto;
+}
+
+.dropdown {
+   position: relative;
 }
 
 .dropdown-content {
@@ -22,45 +44,95 @@ body {
    position: absolute;
    top: 100%;
    left: 0;
-   background-color: #333;
-   min-width: 180px;
+   border-radius: 6px;
+   background-color: #ffffff;
+   min-width: 160px;
    z-index: 10;
+   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+   flex-direction: column;
+   list-style: none;
+   margin: 0;
+   padding: 5px 0;
 }
 
 .dropdown:hover .dropdown-content {
-   display: block;
-}
-
-ul {
-   list-style: none;
-   margin: 0;
-   padding: 0;
    display: flex;
 }
 
-li {
-   position: relative;
+.dropdown-content a {
+   color: #333333 !important;
+   padding: 12px 16px;
+   font-size: 16px;
+   transition: background-color 0.2s ease;
 }
 
-a {
+.dropdown-content a:hover {
+   background-color: #f5f5f5;
+   color: #0000FF !important;
+   border-radius: 6px;
+   transition: color 0.2s ease;
+}
+
+.Menu a {
    display: block;
    color: white;
    text-decoration: none;
-   padding: 14px 20px;
+   padding: 10px 15px;
+   font-size: 20px;
+}
+
+.Menu a:hover {
+   text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+   /* Efecto sutil al pasar el mouse */
+}
+
+/* Buscador */
+.Buscador {
+   display: flex;
+   align-items: center;
+   gap: 5px;
+}
+
+.input-buscar {
+   padding: 8px 12px;
+   font-size: 16px;
+   border: none;
+   border-radius: 6px 0 0 6px;
+}
+
+.btn-buscar {
+   padding: 8px 15px;
+   font-size: 16px;
+   background-color: #333;
+   color: white;
+   border: none;
+   border-radius: 0 6px 6px 0;
+   cursor: pointer;
+}
+
+.btn-buscar:hover {
+   background-color: #444;
+}
+
+/* Footer */
+.contenido-principal {
+   flex: 1;
+   display: block;
 }
 
 .footer {
-   margin-top: 200px;
    display: flex;
    flex-direction: column;
+   justify-content: center;
+   align-items: center;
    background-color: #0000FF;
    width: 100%;
    height: 120px;
-   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+   box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.15);
 }
 
-p {
-   margin: auto;
+.footer p {
+   margin: 5px 0;
    color: #ffffff;
    font-size: 20px;
 }
@@ -68,18 +140,17 @@ p {
 .instagram {
    display: flex;
    flex-direction: row;
-   justify-items: center;
    align-items: center;
-   margin: auto;
 }
 
-a {
+.instagram a {
    color: #ffffff;
    text-decoration: none;
    font-size: 20px;
+   padding: 5px;
 }
 
-i {
+.instagram i {
    color: #ffffff;
    font-size: 20px;
    margin-right: 10px;

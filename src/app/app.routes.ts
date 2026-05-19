@@ -12,6 +12,7 @@ import { Marcas } from './pages/marcas/marcas';
 import { Paises } from './pages/paises/paises';
 import { Tamanios } from './pages/tamanios/tamanios';
 import { Sabores } from './pages/sabores/sabores';
+import { Anios } from './pages/anios/anios';
 
 
 export const routes: Routes = [
@@ -37,4 +38,5 @@ export const routes: Routes = [
     { path: 'EdicionesEspeciales', component: EdicionesEspeciales },
     { path: 'Paises', component: Paises },
     { path: 'Cajas', component: Cajas },
+    { path: 'Años', component: Anios }
 ];
