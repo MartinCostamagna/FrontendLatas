@@ -1,0 +1,213 @@
+/* Titulo */
+h1 {
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+/* Form */
+.formRegLata {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+    column-gap: 80px;
+    row-gap: 40px;
+    min-height: calc(100vh - 150px);
+    margin-bottom: -30px;
+}
+
+/* Divs */
+/* div de la izquierda*/
+.divIzquierda,
+.divMedio,
+.divDerecho {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* div de ingreso de fotos */
+.divDerecho {
+    align-items: center;
+}
+
+/* Estilos del contenedor de carga de fotos */
+.contenedor-carga-fotos {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.foto-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fdfdfd;
+    border: 1px dashed #adadad;
+    border-radius: 8px;
+    padding: 10px;
+    width: 200px;
+}
+
+.preview-box {
+    width: 160px;
+    height: 160px;
+    background-color: #f0f0f0;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    overflow: hidden;
+    transition: background 0.2s ease;
+}
+
+.preview-box:hover {
+    background-color: #e4e4e4;
+}
+
+.placeholder-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #777;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    text-align: center;
+    padding: 10px;
+}
+
+.icono-mas {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #0000FF;
+}
+
+.img-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.btn-quitar-foto {
+    margin-top: 8px;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 4px 10px;
+    font-size: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-quitar-foto:hover {
+    background-color: #cc0000;
+}
+
+/* div de los botones */
+.divBotones {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 70px;
+    text-align: center;
+    margin-top: 120px;
+}
+
+/* Labels */
+label {
+    display: block;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #444;
+    margin-top: 10px;
+    margin-bottom: 4px;
+}
+
+/* Inputs */
+input[type="text"],
+.autocomplete-input,
+select#edicionLimitada {
+    width: 240px;
+    height: 35px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    padding: 6px 12px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input[type="text"]:focus,
+.autocomplete-input:focus,
+select#edicionLimitada:focus {
+    outline: none;
+    border-color: #0000FF;
+    box-shadow: 0 0 0 3px rgba(0, 0, 255, 0.15);
+    background-color: #fafafa;
+}
+
+/* Botones */
+button {
+    font-family: Arial, sans-serif;
+    width: 160px;
+    height: 40px;
+    background-color: #0000FF;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+    background-color: #0000CC;
+}
+
+/* Estilo del contenedor del Autocomplete */
+.typeahead-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Lista desplegable del Autocomplete */
+.autocomplete-list {
+    position: absolute;
+    top: 38px;
+    left: 0;
+    z-index: 1000;
+    background-color: #ffffff;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.autocomplete-list li {
+    padding: 10px;
+    cursor: pointer;
+    text-align: left;
+    color: #000000;
+}
+
+.autocomplete-list li:hover {
+    background-color: #f0f0f0;
+    color: #0000FF;
+}

@@ -1,1 +1,188 @@
-<p>nueva-lata works!</p>
+<h1>Registrar una Nueva Lata</h1>
+<form class="formRegLata" [formGroup]="formRegLata" (ngSubmit)="submitLata()">
+
+    <div class="divIzquierda">
+
+        <label for="marca">Marca</label>
+        <div class="typeahead-container">
+            <input type="text" id="marca" placeholder="Seleccione una Marca" [formControl]="marcaSearchControl"
+                autocomplete="off" (focus)="showMarcaDropdown = true" (blur)="onBlur('marca')"
+                class="autocomplete-input" />
+            <ul *ngIf="showMarcaDropdown && filteredMarcas.length > 0" class="autocomplete-list">
+                <li *ngFor="let marca of filteredMarcas" (mousedown)="selectItem(marca, 'marca')">
+                    {{ marca.nombre }}
+                </li>
+            </ul>
+        </div>
+
+        <label for="tamaño">Tamaño</label>
+        <div class="typeahead-container">
+            <input type="text" id="tamaño" placeholder="Seleccione un Tamaño" [formControl]="tamanoSearchControl"
+                autocomplete="off" (focus)="showTamanoDropdown = true" (blur)="onBlur('tamano')"
+                class="autocomplete-input" />
+            <ul *ngIf="showTamanoDropdown && filteredTamanos.length > 0" class="autocomplete-list">
+                <li *ngFor="let tamano of filteredTamanos" (mousedown)="selectItem(tamano, 'tamano')">
+                    {{ tamano.volumen }}
+                </li>
+            </ul>
+        </div>
+
+
+        <label for="sabor">Sabor</label>
+        <div class="typeahead-container">
+            <input type="text" id="sabor" placeholder="Seleccione un Sabor" [formControl]="saborSearchControl"
+                autocomplete="off" (focus)="showSaborDropdown = true" (blur)="onBlur('sabor')"
+                class="autocomplete-input" />
+            <ul *ngIf="showSaborDropdown && filteredSabores.length > 0" class="autocomplete-list">
+                <li *ngFor="let sabor of filteredSabores" (mousedown)="selectItem(sabor, 'sabor')">
+                    {{ sabor.nombre }}
+                </li>
+            </ul>
+        </div>
+
+        <label for="especialidad">Especialidad</label>
+        <div class="typeahead-container">
+            <input type="text" id="especialidad" placeholder="Seleccione una Especialidad"
+                [formControl]="especialidadSearchControl" autocomplete="off" (focus)="showEspecialidadDropdown = true"
+                (blur)="onBlur('especialidad')" class="autocomplete-input" />
+            <ul *ngIf="showEspecialidadDropdown && filteredEspecialidades.length > 0" class="autocomplete-list">
+                <li *ngFor="let especialidad of filteredEspecialidades"
+                    (mousedown)="selectItem(especialidad, 'especialidad')">
+                    {{ especialidad.nombre }}
+                </li>
+            </ul>
+        </div>
+
+        <label for="edicionLimitada">Edicion Limitada</label>
+        <div class="typeahead-container">
+            <input type="text" id="edicionLimitada"
+                [value]="formRegLata.get('edicionLimitada')?.value === 'true' ? 'Sí' : (formRegLata.get('edicionLimitada')?.value === 'false' ? 'No' : '')"
+                readonly placeholder="Seleccione una Opción"
+                (click)="showEdicionLimitadaDropdown = !showEdicionLimitadaDropdown" (blur)="onBlur('edicionLimitada')"
+                class="autocomplete-input" style="cursor: pointer;" />
+            <ul *ngIf="showEdicionLimitadaDropdown" class="autocomplete-list">
+                <li (mousedown)="selectItem('true', 'edicionLimitada')">Sí</li>
+                <li (mousedown)="selectItem('false', 'edicionLimitada')">No</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="divMedio">
+        <label for="edicionEspecial">Edicion Especial</label>
+        <div class="typeahead-container">
+            <input type="text" id="edicionEspecial" placeholder="Seleccione una Edición Especial"
+                [formControl]="edicionEspecialSearchControl" autocomplete="off"
+                (focus)="showEdicionEspecialDropdown = true" (blur)="onBlur('edicionEspecial')"
+                class="autocomplete-input" />
+            <ul *ngIf="showEdicionEspecialDropdown && filteredEdicionesEspeciales.length > 0" class="autocomplete-list">
+                <li *ngFor="let edicionEspecial of filteredEdicionesEspeciales"
+                    (mousedown)="selectItem(edicionEspecial, 'edicionEspecial')">
+                    {{ edicionEspecial.nombre }}
+                </li>
+            </ul>
+        </div>
+
+        <label for="descripcion">Descripcion</label>
+        <div class="typeahead-container">
+            <input type="text" id="descripcion" placeholder="Seleccione una Descripcion"
+                [formControl]="descripcionSearchControl" autocomplete="off" (focus)="showDescripcionDropdown = true"
+                (blur)="onBlur('descripcion')" class="autocomplete-input" />
+            <ul *ngIf="showDescripcionDropdown && filteredDescripciones.length > 0" class="autocomplete-list">
+                <li *ngFor="let descripcion of filteredDescripciones"
+                    (mousedown)="selectItem(descripcion, 'descripcion')">
+                    {{ descripcion.texto }}
+                </li>
+            </ul>
+        </div>
+
+        <label for="año">Año</label>
+        <div class="typeahead-container">
+            <input type="text" id="año" placeholder="Seleccione un Año" [formControl]="anioSearchControl"
+                autocomplete="off" (focus)="showAnioDropdown = true" (blur)="onBlur('anio')"
+                class="autocomplete-input" />
+            <ul *ngIf="showAnioDropdown && filteredAnios.length > 0" class="autocomplete-list">
+                <li *ngFor="let anio of filteredAnios" (mousedown)="selectItem(anio, 'anio')">
+                    {{ anio }}
+                </li>
+            </ul>
+        </div>
+
+        <label for="pais">Pais</label>
+        <div class="typeahead-container">
+            <input type="text" id="pais" placeholder="Seleccione un País" [formControl]="paisSearchControl"
+                autocomplete="off" (focus)="showPaisDropdown = true" (blur)="onBlur('pais')"
+                class="autocomplete-input" />
+            <ul *ngIf="showPaisDropdown && filteredPaises.length > 0" class="autocomplete-list">
+                <li *ngFor="let pais of filteredPaises" (mousedown)="selectItem(pais, 'pais')">
+                    {{ pais.nombre }}
+                </li>
+            </ul>
+        </div>
+
+        <label for="caja">Caja</label>
+        <div class="typeahead-container">
+            <input type="text" id="caja" placeholder="Seleccione una Caja" [formControl]="cajaSearchControl"
+                autocomplete="off" (focus)="showCajaDropdown = true" (blur)="onBlur('caja')"
+                class="autocomplete-input" />
+            <ul *ngIf="showCajaDropdown && filteredCajas.length > 0" class="autocomplete-list">
+                <li *ngFor="let caja of filteredCajas" (mousedown)="selectItem(caja, 'caja')">
+                    {{ caja.numeroDeCaja }}
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="divDerecho">
+        <div class="contenedor-carga-fotos">
+
+            <div class="foto-card">
+                <div class="preview-box" (click)="fileInput1.click()">
+                    <img *ngIf="previewFoto1" [src]="previewFoto1" class="img-preview" />
+                    <div *ngIf="!previewFoto1" class="placeholder-text">
+                        <span class="icono-mas">+</span>
+                        <span>Seleccionar Foto 1</span>
+                    </div>
+                </div>
+                <input #fileInput1 type="file" accept="image/*" style="display: none;"
+                    (change)="onFileSelected($event, 1)" />
+                <button type="button" *ngIf="previewFoto1" class="btn-quitar-foto"
+                    (click)="removerFoto(1)">Quitar</button>
+            </div>
+
+            <div class="foto-card">
+                <div class="preview-box" (click)="fileInput2.click()">
+                    <img *ngIf="previewFoto2" [src]="previewFoto2" class="img-preview" />
+                    <div *ngIf="!previewFoto2" class="placeholder-text">
+                        <span class="icono-mas">+</span>
+                        <span>Seleccionar Foto 2</span>
+                    </div>
+                </div>
+                <input #fileInput2 type="file" accept="image/*" style="display: none;"
+                    (change)="onFileSelected($event, 2)" />
+                <button type="button" *ngIf="previewFoto2" class="btn-quitar-foto"
+                    (click)="removerFoto(2)">Quitar</button>
+            </div>
+
+            <div class="foto-card">
+                <div class="preview-box" (click)="fileInput3.click()">
+                    <img *ngIf="previewFoto3" [src]="previewFoto3" class="img-preview" />
+                    <div *ngIf="!previewFoto3" class="placeholder-text">
+                        <span class="icono-mas">+</span>
+                        <span>Seleccionar Foto 3</span>
+                    </div>
+                </div>
+                <input #fileInput3 type="file" accept="image/*" style="display: none;"
+                    (change)="onFileSelected($event, 3)" />
+                <button type="button" *ngIf="previewFoto3" class="btn-quitar-foto"
+                    (click)="removerFoto(3)">Quitar</button>
+            </div>
+
+        </div>
+
+        <div class="divBotones">
+            <button type="button" routerLink="/inicio">Atras</button>
+            <button type="submit" [disabled]="formRegLata.invalid">Guardar</button>
+        </div>
+    </div>
+</form>
