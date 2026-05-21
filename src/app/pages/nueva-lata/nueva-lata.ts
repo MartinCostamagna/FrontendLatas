@@ -3,15 +3,15 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, FormsModule }
 import { RouterModule, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 //services
-import { MarcaService } from '../../serices/marca.service';
-import { SaborService } from '../../serices/sabor.service';
-import { TamanoService } from '../../serices/tamano.service';
-import { EdicionEspecialService } from '../../serices/edicionEspecial.service';
-import { EspecialidadService } from '../../serices/especialidad.service';
-import { DescripcionService } from '../../serices/descripcion.service';
-import { PaisService } from '../../serices/pais.service';
-import { CajaService } from '../../serices/caja.service';
-import { LataService } from '../../serices/lata.service';
+import { MarcaService } from '../../services/marca.service';
+import { SaborService } from '../../services/sabor.service';
+import { TamanoService } from '../../services/tamano.service';
+import { EdicionEspecialService } from '../../services/edicionEspecial.service';
+import { EspecialidadService } from '../../services/especialidad.service';
+import { DescripcionService } from '../../services/descripcion.service';
+import { PaisService } from '../../services/pais.service';
+import { CajaService } from '../../services/caja.service';
+import { LataService } from '../../services/lata.service';
 //interfaces
 import { Marca, Tamano, Sabor, Especialidad, EdicionEspecial, Descripcion, Pais, Caja } from '../../interfaces/lata.interface';
 

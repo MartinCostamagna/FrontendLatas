@@ -1,0 +1,81 @@
+/* Formulario de logueo */
+.login {
+    position: relative;
+    z-index: 2;
+    width: 90%;
+    max-width: 400px;
+    margin: auto;
+    margin-top: 30px;
+    min-height: calc(100vh - 150px);
+}
+
+h1 {
+    font-size: 40px;
+    font-family: Arial, sans-serif;
+    color: #000000;
+    text-align: center;
+    margin-bottom: 60px;
+    margin-top: 60px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0 auto 20px auto;
+    margin-bottom: 20px;
+    width: 264px;
+}
+
+label {
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 240px;
+    height: 35px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    padding: 6px 12px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    margin-bottom: 15px;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    border-color: #0000FF;
+    box-shadow: 0 0 0 3px rgba(0, 0, 255, 0.15);
+    background-color: #fafafa;
+}
+
+button[type="submit"] {
+    background-color: #0000FF;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    padding: 12px;
+    width: 160px;
+    display: block;
+    margin: auto;
+    margin-top: 60px;
+    cursor: pointer;
+}
+
+/* Estilo para mensajes de error */
+.error-message {
+    color: red;
+    text-align: center;
+    margin-bottom: 10px;
+}
