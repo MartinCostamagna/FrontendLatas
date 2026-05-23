@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -69,6 +69,9 @@ export class NuevaLata implements OnInit {
   previewFoto1: string | null = null;
   previewFoto2: string | null = null;
   previewFoto3: string | null = null;
+  @ViewChild('fileInput1') fileInput1!: ElementRef;
+  @ViewChild('fileInput2') fileInput2!: ElementRef;
+  @ViewChild('fileInput3') fileInput3!: ElementRef;
   // Listas no desplegadas
   showMarcaDropdown = false;
   showTamanoDropdown = false
@@ -139,7 +142,10 @@ export class NuevaLata implements OnInit {
     // Suscribe a los cambios del input de búsqueda de descripción
     this.descripcionSearchControl.valueChanges.subscribe(value => {
       this.filterData(value, 'descripcion');
+      this.formRegLata.get('idDescripcion')?.setValue(null);
     });
+
+
 
     //Suscribe a los cambios del input de búsqueda de año
     this.anioSearchControl.valueChanges.subscribe(value => {
@@ -215,7 +221,7 @@ export class NuevaLata implements OnInit {
       this.filteredMarcas = this.marcas.filter(m => m.nombre.toLowerCase().includes(search));
       if (!search) this.formRegLata.get('idMarca')?.setValue(null);
     }
-    if (tipo === 'tamaño') {
+    if (tipo === 'tamano') {
       this.filteredTamanos = this.tamanos.filter(t => t.volumen.toString().includes(search));
       if (!search) this.formRegLata.get('idTamaño')?.setValue(null);
     }
@@ -233,7 +239,6 @@ export class NuevaLata implements OnInit {
     }
     if (tipo === 'descripcion') {
       this.filteredDescripciones = this.descripciones.filter(d => d.texto.toLowerCase().includes(search));
-      this.formRegLata.get('idDescripcion')?.setValue(null);
     }
     if (tipo === 'anio') {
       this.filteredAnios = this.anios.filter(a => a.toString().includes(search));
@@ -252,22 +257,22 @@ export class NuevaLata implements OnInit {
   selectItem(item: any, tipo: string): void {
     if (tipo === 'marca') {
       this.marcaSearchControl.setValue(item.nombre, { emitEvent: false });
-      this.formRegLata.get('idMarca')?.setValue(item.idMarca);
+      this.formRegLata.get('idMarca')?.setValue(item.id);
       this.showMarcaDropdown = false;
     }
     if (tipo === 'tamano') {
       this.tamanoSearchControl.setValue(item.volumen.toString(), { emitEvent: false });
-      this.formRegLata.get('idTamaño')?.setValue(item.idTamano);
+      this.formRegLata.get('idTamaño')?.setValue(item.id);
       this.showTamanoDropdown = false;
     }
     if (tipo === 'sabor') {
       this.saborSearchControl.setValue(item.nombre, { emitEvent: false });
-      this.formRegLata.get('idSabor')?.setValue(item.idSabor);
+      this.formRegLata.get('idSabor')?.setValue(item.id);
       this.showSaborDropdown = false;
     }
     if (tipo === 'especialidad') {
       this.especialidadSearchControl.setValue(item.nombre, { emitEvent: false });
-      this.formRegLata.get('idEspecialidad')?.setValue(item.idEspecialidad);
+      this.formRegLata.get('idEspecialidad')?.setValue(item.id);
       this.showEspecialidadDropdown = false;
     }
     if (tipo === 'edicionLimitada') {
@@ -276,17 +281,17 @@ export class NuevaLata implements OnInit {
     }
     if (tipo === 'edicionEspecial') {
       this.edicionEspecialSearchControl.setValue(item.nombre, { emitEvent: false });
-      this.formRegLata.get('idEdicionEspecial')?.setValue(item.idEdicionEspecial);
+      this.formRegLata.get('idEdicionEspecial')?.setValue(item.id);
       this.showEdicionEspecialDropdown = false;
     }
     if (tipo === 'descripcion') {
       this.descripcionSearchControl.setValue(item.texto, { emitEvent: false });
-      this.formRegLata.get('idDescripcion')?.setValue(item.idTemplate);
+      this.formRegLata.get('idDescripcion')?.setValue(item.id);
       this.showDescripcionDropdown = false;
     }
     if (tipo === 'pais') {
       this.paisSearchControl.setValue(item.nombre, { emitEvent: false });
-      this.formRegLata.get('idPais')?.setValue(item.idPais);
+      this.formRegLata.get('idPais')?.setValue(item.id);
       this.showPaisDropdown = false;
     }
     if (tipo === 'anio') {
@@ -296,7 +301,7 @@ export class NuevaLata implements OnInit {
     }
     if (tipo === 'caja') {
       this.cajaSearchControl.setValue(item.numeroDeCaja.toString(), { emitEvent: false });
-      this.formRegLata.get('idCaja')?.setValue(item.idCaja);
+      this.formRegLata.get('idCaja')?.setValue(item.numeroDeCaja);
       this.showCajaDropdown = false;
     }
   }
@@ -357,35 +362,37 @@ export class NuevaLata implements OnInit {
     let idDescripcionActual = this.formRegLata.get('idDescripcion')?.value;
 
     if (textoEscrito && !idDescripcionActual) {
+      console.log('Detectada descripción nueva libre. Registrando en el back...');
       try {
         const nuevaDesc = await this.descripcionService.registrarDescripcion({ texto: textoEscrito }).toPromise();
-        if (nuevaDesc && nuevaDesc.id) {
-          idDescripcionActual = nuevaDesc.id;
-          this.formRegLata.get('idDescripcion')?.setValue(idDescripcionActual);
-          this.descripciones.push(nuevaDesc);
-        }
+        idDescripcionActual = nuevaDesc?.id;
       } catch (err) {
-        console.error('Error al registrar la descripción:', err);
+        console.error('Error al registrar la descripción nueva:', err);
         window.alert('Error al guardar la descripción.');
         return;
       }
+    } else {
+      console.log('Usando descripción existente con ID:', idDescripcionActual);
     }
 
     const formData = new FormData();
 
-    formData.append('idMarca', this.formRegLata.value.idMarca || '');
-    formData.append('idTamaño', this.formRegLata.value.idTamaño || '');
-    formData.append('idSabor', this.formRegLata.value.idSabor || '');
-    formData.append('idEspecialidad', this.formRegLata.value.idEspecialidad || '');
-    formData.append('edicionLimitada', this.formRegLata.value.edicionLimitada);
-    formData.append('idEdicionEspecial', this.formRegLata.value.idEdicionEspecial || '');
-    formData.append('idDescripcion', this.formRegLata.value.idDescripcion || '');
-    formData.append('idPais', this.formRegLata.value.idPais || '');
-    formData.append('idCaja', this.formRegLata.value.idCaja || '');
+    formData.append('marcaId', this.formRegLata.get('idMarca')?.value || '');
+    formData.append('tamanoId', this.formRegLata.get('idTamaño')?.value || '');
+    formData.append('saborId', this.formRegLata.get('idSabor')?.value || '');
+    formData.append('especialidadId', this.formRegLata.get('idEspecialidad')?.value || '');
+    formData.append('edicionLimitada', this.formRegLata.get('edicionLimitada')?.value || 'false');
+    if (this.formRegLata.get('idEdicionEspecial')?.value) {
+      formData.append('edicionEspecialId', this.formRegLata.get('idEdicionEspecial')?.value);
+    }
+    formData.append('descripcionId', String(idDescripcionActual || ''));
     formData.append('anio', String(this.anioSearchControl.value || ''));
-
+    formData.append('paisId', this.formRegLata.get('idPais')?.value || '');
+    const idCajaSeleccionada = this.formRegLata.get('idCaja')?.value;
+    if (idCajaSeleccionada) {
+      formData.append('numeroDeCaja', String(idCajaSeleccionada));
+    }
     formData.append('nombreMarca', nombreMarca);
-
     if (this.foto1File) formData.append('fotos', this.foto1File);
     if (this.foto2File) formData.append('fotos', this.foto2File);
     if (this.foto3File) formData.append('fotos', this.foto3File);
@@ -402,6 +409,15 @@ export class NuevaLata implements OnInit {
 
         this.foto1File = null; this.foto2File = null; this.foto3File = null;
         this.previewFoto1 = null; this.previewFoto2 = null; this.previewFoto3 = null;
+
+        this.descripcionService.obtenerDescripciones().subscribe({
+          next: data => { this.descripciones = data.sort((a, b) => a.texto.localeCompare(b.texto)); this.filteredDescripciones = data.sort((a, b) => a.texto.localeCompare(b.texto)); },
+          error: err => console.error('Error al cargar descripciones:', err)
+        });
+
+        if (this.fileInput1) this.fileInput1.nativeElement.value = '';
+        if (this.fileInput2) this.fileInput2.nativeElement.value = '';
+        if (this.fileInput3) this.fileInput3.nativeElement.value = '';
       },
       error: (err) => {
         console.error('Error al guardar la lata con archivos:', err);

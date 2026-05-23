@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Descripcion } from '../interfaces/lata.interface';
 
@@ -14,6 +14,10 @@ export class DescripcionService {
     }
 
     registrarDescripcion(descripcion: { texto: string }): Observable<Descripcion> {
-        return this.http.post<Descripcion>(this.apiUrl, descripcion);
+        const token = localStorage.getItem('auth_token');
+        const headers = new HttpHeaders({
+            'Authorization': `Bearer ${token}`
+        });
+        return this.http.post<any>(this.apiUrl, descripcion, { headers });
     }
 }
