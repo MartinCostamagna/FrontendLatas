@@ -5,7 +5,7 @@ export interface Especialidad { id: number; nombre: string; }
 export interface EdicionEspecial { id: number; nombre: string; }
 export interface Descripcion { id: number; texto: string; }
 export interface Pais { id: number; nombre: string; }
-export interface Caja { numeroDeCaja: number; cantidadActual: number; tamañoId: number }
+export interface Caja { numeroDeCaja: number; cantidadActual: number; tamañoId: any }
 
 export interface Lata {
     id?: number;
@@ -22,4 +22,13 @@ export interface Lata {
     foto1?: string | null;
     foto2?: string | null;
     foto3?: string | null;
+
+    marca: Marca;
+    tamaño: Tamano;
+    sabor: Sabor;
+    especialidad: Especialidad;
+    edicionEspecial?: EdicionEspecial | null;
+    descripcion?: Descripcion | null;
+    pais: Pais;
+    caja: Caja;
 }

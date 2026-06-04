@@ -1,1 +1,44 @@
-<p>cajas works!</p>
+<h1>Cajas</h1>
+<div class="divPrincipal">
+    <form class="formRegistro" [formGroup]="formRegistro" (ngSubmit)="guardarOActualizarCaja()">
+        <label for="numero" class="labelReg">N° de Caja</label>
+        <input type="text" id="numero" formControlName="numeroDeCaja" placeholder="Ingrese el número de la caja"
+            autoComplete="off">
+        <label for="tamano" class="labelReg">Tamaño</label>
+        <select name="tamano" id="tamano" formControlName="tamañoId" class="input-select">
+            <option value="" selected>Seleccione un tamaño</option>
+            <option *ngFor="let tam of tamanos" [value]="tam.id">{{ tam.volumen }}</option>
+        </select>
+        <label for="cantidadActual" class="labelReg">CantidadActual</label>
+        <input type="text" id="cantidadActual" formControlName="cantidadActual" placeholder="Ingrese la cantidadActual"
+            autoComplete="off">
+        <button type="submit" [disabled]="formRegistro.invalid">{{ cajaEnEdicion ? 'Actualizar' : 'Guardar' }}</button>
+        <button type="button" class="btn-cancelar" *ngIf="cajaEnEdicion" (click)="cancelarEdicion()">Cancelar</button>
+    </form>
+
+    <div class="divTabla">
+        <div class="tabla-scroll">
+            <table class="objetos">
+                <thead>
+                    <tr>
+                        <th>Numero</th>
+                        <th>Tamaño</th>
+                        <th>Cantidad Actual</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let obj of objetos">
+                        <td>{{ obj.numeroDeCaja }}</td>
+                        <td>{{ obj['tamañoId']?.volumen || 'N/A' }}</td>
+                        <td>{{ obj.cantidadActual }}</td>
+                        <td class="celda-acciones">
+                            <button class="btn-editar" (click)="cargarCajaEnFormulario(obj)">Editar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

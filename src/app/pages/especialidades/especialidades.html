@@ -1,1 +1,34 @@
-<p>especialidades works!</p>
+<h1>Especialidades</h1>
+<div class="divPrincipal">
+    <form class="formRegistro" [formGroup]="formRegistro" (ngSubmit)="guardarEspecialidad()">
+        <label for="nombre" class="labelReg">Especialidad</label>
+        <input type="text" id="nombre" formControlName="nombre" placeholder="Ingrese la especialidad"
+            autoComplete="off">
+        <button type="submit" [disabled]="formRegistro.invalid">Guardar</button>
+    </form>
+
+    <div class="divTabla">
+        <div class="filtros">
+            <button id="alfabetico" (click)="ordenarAlfabeticamente()">Alfabetico</button>
+            <button id="cantidad" (click)="ordenarPorCantidad()">Cantidad</button>
+        </div>
+
+        <div class="tabla-scroll">
+            <table class="objetos">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let obj of objetos">
+                        <td>{{ obj.nombre }}</td>
+                        <td>{{ obj.cantidad }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

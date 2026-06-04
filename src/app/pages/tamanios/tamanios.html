@@ -1,1 +1,33 @@
-<p>tamanios works!</p>
+<h1>Tamaños</h1>
+<div class="divPrincipal">
+    <form class="formRegistro" [formGroup]="formRegistro" (ngSubmit)="guardarTamano()">
+        <label for="volumen" class="labelReg">Tamaño</label>
+        <input type="number" id="volumen" formControlName="volumen" placeholder="Ingrese el tamaño" autoComplete="off">
+        <button type="submit" [disabled]="formRegistro.invalid">Guardar</button>
+    </form>
+
+    <div class="divTabla">
+        <div class="filtros">
+            <button id="alfabetico" (click)="ordenarPorVolumen()">Volumen</button>
+            <button id="cantidad" (click)="ordenarPorCantidad()">Cantidad</button>
+        </div>
+
+        <div class="tabla-scroll">
+            <table class="objetos">
+                <thead>
+                    <tr>
+                        <th>Volumen</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let obj of objetos">
+                        <td>{{ obj.volumen }}</td>
+                        <td>{{ obj.cantidad }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

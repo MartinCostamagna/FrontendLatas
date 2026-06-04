@@ -20,4 +20,8 @@ export class LataService {
         });
         return this.http.post<any>(this.apiUrl, formData, { headers });
     }
+
+    obtenerLatas(): Observable<Lata[]> {
+        return this.http.get<Lata[]>(this.apiUrl);
+    }
 }

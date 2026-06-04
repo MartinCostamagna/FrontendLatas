@@ -1,1 +1,26 @@
-<p>anios works!</p>
+<h1>Años</h1>
+<div class="divPrincipal">
+    <div class="divTabla">
+        <div class="filtros">
+            <button id="porAnio" (click)="ordenarPorAnio()">Por Año</button>
+            <button id="cantidad" (click)="ordenarPorCantidad()">Cantidad</button>
+        </div>
+
+        <div class="tabla-scroll">
+            <table class="objetos">
+                <thead>
+                    <tr>
+                        <th>Año</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let obj of objetos">
+                        <td>{{ obj.anio }}</td>
+                        <td>{{ obj.cantidad }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

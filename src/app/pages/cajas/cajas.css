@@ -1,0 +1,195 @@
+/* Titulo */
+h1 {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+/* Div Principal */
+.divPrincipal {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: start;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 34px 20px;
+    box-sizing: border-box;
+}
+
+/* Formulario de Registro */
+.formRegistro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 400px;
+    height: 380px;
+    gap: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid #eaeaea;
+}
+
+/* Label */
+.labelReg {
+    display: block;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #444;
+}
+
+/* Input */
+input[type="text"] {
+    width: 300px;
+    height: 50px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    padding: 6px 12px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #0000FF;
+    box-shadow: 0 0 0 3px rgba(0, 0, 255, 0.15);
+    background-color: #fafafa;
+}
+
+select {
+    width: 300px;
+    height: 50px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    padding: 6px 12px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+select:focus {
+    outline: none;
+    border-color: #0000FF;
+    box-shadow: 0 0 0 3px rgba(0, 0, 255, 0.15);
+    background-color: #fafafa;
+}
+
+/* Boton */
+button {
+    font-family: Arial, sans-serif;
+    width: 170px;
+    height: 45px;
+    background-color: #0000FF;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+    background-color: #0000CC;
+}
+
+.btn-cancelar {
+    background-color: #f44336;
+    margin-top: 0px;
+}
+
+.btn-cancelar:hover {
+    background-color: #d32f2f;
+}
+
+.celda-acciones {
+    text-align: center;
+}
+
+.btn-editar {
+    width: auto;
+    height: 30px;
+    font-size: 13px;
+    padding: 0 10px;
+    background-color: #ff9800;
+    margin-top: 0;
+}
+
+.btn-editar:hover {
+    background-color: #f57c00;
+}
+
+/* Sección Tabla y Filtros */
+.divTabla {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 550px;
+    height: 433px;
+    gap: 15px;
+}
+
+/* Estilos de la Tabla */
+.tabla-scroll {
+    flex: 1;
+    overflow-y: auto;
+    border: 1px solid #eaeaea;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Estilos para el Scrollbar de la tabla */
+.tabla-scroll::-webkit-scrollbar {
+    width: 8px;
+}
+
+.tabla-scroll::-webkit-scrollbar-track {
+    background: #f8f9fa;
+    border-radius: 0 12px 12px 0;
+}
+
+.tabla-scroll::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 10px;
+}
+
+.tabla-scroll::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+.objetos {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.objetos th,
+.objetos td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.objetos th {
+    position: sticky;
+    top: 0;
+    background-color: #0000FF;
+    z-index: 1;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+
+.objetos tbody tr:hover {
+    background-color: #f1f1f1;
+}

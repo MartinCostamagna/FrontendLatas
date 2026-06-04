@@ -3,7 +3,6 @@ import { Inicio } from './pages/inicio/inicio';
 import { Login } from './pages/login/login';
 import { Listado } from './pages/listado/listado';
 import { Lata } from './pages/lata/lata';
-import { Estadistica } from './pages/estadistica/estadistica';
 import { NuevaLata } from './pages/nueva-lata/nueva-lata';
 import { Cajas } from './pages/cajas/cajas';
 import { EdicionesEspeciales } from './pages/ediciones-especiales/ediciones-especiales';
@@ -27,8 +26,6 @@ export const routes: Routes = [
 
     { path: 'latas', component: Listado },
     { path: 'lata', component: Lata },
-
-    { path: 'estadistica', component: Estadistica },
 
     { path: 'NuevaLata', component: NuevaLata },
     { path: 'Marcas', component: Marcas },

@@ -1,0 +1,113 @@
+/* Titulo */
+h1 {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+/* Div Principal */
+.divPrincipal {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 34px 20px;
+    box-sizing: border-box;
+}
+
+/* Sección Tabla y Filtros */
+.divTabla {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 550px;
+    gap: 15px;
+}
+
+.filtros {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    font-size: 15px;
+}
+
+#porAnio,
+#cantidad {
+    width: 100px;
+    height: 35px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: white;
+    color: #0000FF;
+    border: 1px solid #0000FF;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+#porAnio {
+    border-radius: 6px 0 0 6px;
+}
+
+#cantidad {
+    border-radius: 0 6px 6px 0;
+}
+
+#porAnio:hover,
+#cantidad:hover {
+    background-color: #f0f4ff;
+}
+
+/* Estilos de la Tabla */
+.tabla-scroll {
+    max-height: 380px;
+    overflow-y: auto;
+    border: 1px solid #eaeaea;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Estilos para el Scrollbar de la tabla */
+.tabla-scroll::-webkit-scrollbar {
+    width: 8px;
+}
+
+.tabla-scroll::-webkit-scrollbar-track {
+    background: #f8f9fa;
+    border-radius: 0 12px 12px 0;
+}
+
+.tabla-scroll::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 10px;
+}
+
+.tabla-scroll::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+.objetos {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.objetos th,
+.objetos td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.objetos th {
+    position: sticky;
+    top: 0;
+    background-color: #0000FF;
+    z-index: 1;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+
+.objetos tbody tr:hover {
+    background-color: #f1f1f1;
+}
