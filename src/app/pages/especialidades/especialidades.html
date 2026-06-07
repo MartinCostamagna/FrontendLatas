@@ -22,7 +22,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let obj of objetos">
+                    <tr *ngFor="let obj of objetos" (click)="verObjetos(obj.id)">
                         <td>{{ obj.nombre }}</td>
                         <td>{{ obj.cantidad }}</td>
                     </tr>

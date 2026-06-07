@@ -1,1 +1,140 @@
-<p>listado works!</p>
+<div class="divPrincipal">
+    <h1>Latas</h1>
+
+    <div class="divFiltro">
+        <div class="divSuperior">
+            <select id="marca" [(ngModel)]="filtros.marca">
+                <option value="">Todas las Marcas</option>
+                @for (marca of marcas; track marca.id) {
+                <option [value]="marca.id">{{ marca.nombre }}</option>
+                }
+            </select>
+            <select id="tamano" [(ngModel)]="filtros.tamano">
+                <option value="">Todos los Tamaños</option>
+                @for (tamano of tamanos; track tamano.id) {
+                <option [value]="tamano.id">{{ tamano.volumen }}</option>
+                }
+            </select>
+            <select id="sabor" [(ngModel)]="filtros.sabor">
+                <option value="">Todos los Sabores</option>
+                @for (sabor of sabores; track sabor.id) {
+                <option [value]="sabor.id">{{ sabor.nombre }}</option>
+                }
+            </select>
+            <select id="especialidad" [(ngModel)]="filtros.especialidad">
+                <option value="">Todas las Especialidades</option>
+                @for (especialidad of especialidades; track especialidad.id) {
+                <option [value]="especialidad.id">{{ especialidad.nombre }}</option>
+                }
+            </select>
+        </div>
+
+        <div class="divInferior">
+            <select id="edLimitada" [(ngModel)]="filtros.edLimitada">
+                <option value="">¿Edición Limitada?</option>
+                <option value="true">Sí</option>
+                <option value="false">No</option>
+            </select>
+            <select id="edEspecial" [(ngModel)]="filtros.edEspecial">
+                <option value="">Todas las Ediciones Especiales</option>
+                @for (edicion of edicionesEspeciales; track edicion.id) {
+                <option [value]="edicion.id">{{ edicion.nombre }}</option>
+                }
+            </select>
+            <select id="Anio" [(ngModel)]="filtros.anio">
+                <option value="">Todos los Años</option>
+                @for (anio of anios; track $index) {
+                <option [value]="anio">{{ anio }}</option>
+                }
+            </select>
+            <select id="pais" [(ngModel)]="filtros.pais">
+                <option value="">Todos los Países</option>
+                @for (pais of paises; track pais.id) {
+                <option [value]="pais.id">{{ pais.nombre }}</option>
+                }
+            </select>
+        </div>
+
+        <div class="divBusqueda">
+            <div class="divBtnsBusqueda">
+                <button class="btnBusqueda" (click)="filtrarLatas()">Buscar</button>
+                <button class="btnBusqueda" (click)="limpiarFiltros()">Limpiar Filtros</button>
+            </div>
+            <div class="divCantLatas">
+                <p>{{ latas.length }} Latas</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="divBtnDispocision">
+        <button id="cuadricula" [class.activo]="vistaActual === 'cuadricula'"
+            (click)="cambiarVista('cuadricula')">Cuadricula</button>
+        <button id="lista" [class.activo]="vistaActual === 'lista'" (click)="cambiarVista('lista')">Lista</button>
+    </div>
+
+    @if (vistaActual === 'cuadricula') {
+    <div class="divCuadricula">
+        @for (lata of latas; track lata.id) {
+        <div class="tarjeta-lata">
+            <div class="imagen-contenedor">
+                <img [src]="obtenerUrlImagen(lata.foto1)" alt="Lata {{ lata.marca.nombre }}">
+            </div>
+            <p class="marca">{{ lata.marca.nombre }}</p>
+            <p class="sabor">{{ lata.sabor.nombre }}</p>
+            <p class="Especialidad">{{ lata.especialidad.nombre }}</p>
+            <p class="edicionEspecial">{{ lata.edicionEspecial?.nombre }}</p>
+            <p class="descripcion">{{ lata.descripcion?.texto }}</p>
+            <p class="tamano">{{ lata['tamaño'].volumen }}</p>
+            <p class="pais">{{ lata.pais.nombre }}</p>
+            <p class="anio">{{ lata.anio }}</p>
+        </div>
+        } @empty {
+        <p style="text-align: center; grid-column: 1 / -1; margin-top: 30px;">
+            No hay latas para mostrar.
+        </p>
+        }
+    </div>
+
+    } @else {
+    <div class="tabla-scroll">
+        <table class="objetos">
+            <thead>
+                <tr>
+                    <th>Marca</th>
+                    <th>Tamaño</th>
+                    <th>Sabor</th>
+                    <th>Especialidad</th>
+                    <th>Ed Limitada</th>
+                    <th>Ed Especial</th>
+                    <th>Descripción</th>
+                    <th>Año</th>
+                    <th>País</th>
+                    <th>Caja</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (lata of latas; track lata.id) {
+                <tr>
+                    <td>{{ lata.marca.nombre }}</td>
+                    <td>{{ lata['tamaño'].volumen }}</td>
+                    <td>{{ lata.sabor.nombre }}</td>
+                    <td>{{ lata.especialidad.nombre }}</td>
+                    <td>{{ lata.edicionLimitada ? 'Sí' : 'No' }}</td>
+                    <td>{{ lata.edicionEspecial?.nombre }}</td>
+                    <td>{{ lata.descripcion?.texto }}</td>
+                    <td>{{ lata.anio }}</td>
+                    <td>{{ lata.pais.nombre }}</td>
+                    <td>{{ lata.caja?.numeroDeCaja }}</td>
+                </tr>
+                } @empty {
+                <tr>
+                    <td colspan="10" style="text-align: center; padding: 20px;">
+                        No hay latas cargadas o ninguna coincide con los filtros.
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    }
+</div>

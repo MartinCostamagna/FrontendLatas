@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { Lata } from '../../interfaces/lata.interface';
 import { LataService } from '../../services/lata.service';
 
@@ -18,7 +19,10 @@ interface AnioConteo {
 export class Anios implements OnInit {
   objetos: AnioConteo[] = [];
 
-  constructor(private lataService: LataService) { }
+  constructor(
+    private lataService: LataService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.cargarYContarAnios();
@@ -54,5 +58,9 @@ export class Anios implements OnInit {
 
   ordenarPorCantidad(): void {
     this.objetos.sort((a, b) => b.cantidad - a.cantidad);
+  }
+
+  verObjetos(anio: string | number) {
+    this.router.navigate(['/latas'], { queryParams: { anio: anio } });
   }
 }

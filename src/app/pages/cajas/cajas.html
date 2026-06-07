@@ -28,7 +28,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let obj of objetos">
+                    <tr *ngFor="let obj of objetos" (click)="verObjetos(obj.numeroDeCaja)">
                         <td>{{ obj.numeroDeCaja }}</td>
                         <td>{{ obj['tamañoId']?.volumen || 'N/A' }}</td>
                         <td>{{ obj.cantidadActual }}</td>

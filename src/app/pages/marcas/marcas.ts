@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Lata, Marca } from '../../interfaces/lata.interface';
 import { MarcaService } from '../../services/marca.service';
@@ -21,6 +22,7 @@ export class Marcas implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private router: Router,
     private marcaService: MarcaService,
     private lataService: LataService,
   ) { }
@@ -65,6 +67,9 @@ export class Marcas implements OnInit {
     this.objetos.sort((a, b) => b.cantidad - a.cantidad);
   }
 
+  verObjetos(marca: number) {
+    this.router.navigate(['/latas'], { queryParams: { marca: marca } });
+  }
 
   guardarMarca(): void {
     if (this.formRegistro.valid) {

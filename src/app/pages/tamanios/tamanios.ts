@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { Lata, Tamano } from '../../interfaces/lata.interface';
 import { TamanoService } from '../../services/tamano.service';
 import { LataService } from '../../services/lata.service';
@@ -20,6 +21,7 @@ export class Tamanios implements OnInit {
   latas: Lata[] = [];
 
   constructor(
+    private router: Router,
     private fb: FormBuilder,
     private tamanoService: TamanoService,
     private lataService: LataService,
@@ -63,6 +65,9 @@ export class Tamanios implements OnInit {
     this.objetos.sort((a, b) => b.cantidad - a.cantidad);
   }
 
+  verObjetos(tamano: number) {
+    this.router.navigate(['/latas'], { queryParams: { tamano: tamano } });
+  }
 
   guardarTamano(): void {
     if (this.formRegistro.valid) {

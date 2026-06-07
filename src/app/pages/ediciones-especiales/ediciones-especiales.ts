@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { Lata, EdicionEspecial } from '../../interfaces/lata.interface';
 import { EdicionEspecialService } from '../../services/edicionEspecial.service';
 import { LataService } from '../../services/lata.service';
@@ -21,6 +22,7 @@ export class EdicionesEspeciales implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private router: Router,
     private edicionEspecialService: EdicionEspecialService,
     private lataService: LataService,
   ) { }
@@ -65,6 +67,9 @@ export class EdicionesEspeciales implements OnInit {
     this.objetos.sort((a, b) => b.cantidad - a.cantidad);
   }
 
+  verObjetos(edEspecial: number) {
+    this.router.navigate(['/latas'], { queryParams: { edEspecial: edEspecial } });
+  }
 
   guardarEdicionEspecial(): void {
     if (this.formRegistro.valid) {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Caja, Tamano } from '../../interfaces/lata.interface';
 import { CajaService } from '../../services/caja.service';
@@ -23,6 +24,7 @@ export class Cajas implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private router: Router,
     private cajaService: CajaService,
     private tamanoService: TamanoService,
   ) { }
@@ -62,6 +64,10 @@ export class Cajas implements OnInit {
     });
 
     this.formRegistro.get('numeroDeCaja')?.disable();
+  }
+
+  verObjetos(numeroDeCaja: number) {
+    this.router.navigate(['/latas'], { queryParams: { caja: numeroDeCaja } });
   }
 
   cancelarEdicion(): void {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { Lata, Especialidad } from '../../interfaces/lata.interface';
 import { EspecialidadService } from '../../services/especialidad.service';
 import { LataService } from '../../services/lata.service';
@@ -21,6 +22,7 @@ export class Especialidades implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private router: Router,
     private especialidadService: EspecialidadService,
     private lataService: LataService,
   ) { }
@@ -65,6 +67,9 @@ export class Especialidades implements OnInit {
     this.objetos.sort((a, b) => b.cantidad - a.cantidad);
   }
 
+  verObjetos(especialidad: number) {
+    this.router.navigate(['/latas'], { queryParams: { especialidad: especialidad } });
+  }
 
   guardarEspecialidad(): void {
     if (this.formRegistro.valid) {

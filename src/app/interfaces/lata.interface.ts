@@ -18,7 +18,7 @@ export interface Lata {
     idDescripcion?: number | null;
     anio: number;
     idPais: number;
-    idCaja: number;
+    idCaja?: number;
     foto1?: string | null;
     foto2?: string | null;
     foto3?: string | null;
@@ -30,5 +30,5 @@ export interface Lata {
     edicionEspecial?: EdicionEspecial | null;
     descripcion?: Descripcion | null;
     pais: Pais;
-    caja: Caja;
+    caja?: Caja;
 }

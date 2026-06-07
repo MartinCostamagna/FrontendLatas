@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Lata, Sabor } from '../../interfaces/lata.interface';
 import { LataService } from '../../services/lata.service';
 import { SaborService } from '../../services/sabor.service';
@@ -21,6 +22,7 @@ export class Sabores implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private router: Router,
     private saborService: SaborService,
     private lataService: LataService,
   ) { }
@@ -63,6 +65,10 @@ export class Sabores implements OnInit {
 
   ordenarPorCantidad(): void {
     this.objetos.sort((a, b) => b.cantidad - a.cantidad);
+  }
+
+  verObjetos(sabor: number) {
+    this.router.navigate(['/latas'], { queryParams: { sabor: sabor } });
   }
 
   guardarSabor(): void {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { Lata, Pais } from '../../interfaces/lata.interface';
 import { PaisService } from '../../services/pais.service';
 import { LataService } from '../../services/lata.service';
@@ -21,6 +22,7 @@ export class Paises implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private router: Router,
     private paisService: PaisService,
     private lataService: LataService,
   ) { }
@@ -63,6 +65,10 @@ export class Paises implements OnInit {
 
   ordenarPorCantidad(): void {
     this.objetos.sort((a, b) => b.cantidad - a.cantidad);
+  }
+
+  verObjetos(pais: number) {
+    this.router.navigate(['/latas'], { queryParams: { pais: pais } });
   }
 
   guardarPais(): void {
