@@ -29,8 +29,9 @@
   </div>
 
   <div class="Buscador">
-    <input type="text" placeholder="Buscar..." class="input-buscar" />
-    <input type="submit" value="Buscar" class="btn-buscar" />
+    <input type="text" placeholder="Buscar..." class="input-buscar" #cajaBusqueda
+      (keyup.enter)="buscar(cajaBusqueda.value)" />
+    <button (click)="buscar(cajaBusqueda.value)" class="btn-buscar">Buscar</button>
   </div>
 </div>
 

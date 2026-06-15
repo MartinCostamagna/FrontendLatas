@@ -37,7 +37,8 @@ export class Listado implements OnInit {
     edEspecial: '',
     anio: '',
     pais: '',
-    caja: ''
+    caja: '',
+    q: '',
   };
   vistaActual: 'cuadricula' | 'lista' = 'cuadricula';
 
@@ -86,7 +87,10 @@ export class Listado implements OnInit {
             return pesoA - pesoB;
           }
 
-          return paisA.localeCompare(paisB);
+          const anioA = a.anio || 0;
+          const anioB = b.anio || 0;
+
+          return anioA - anioB;
         });
 
         this.latas = latasOrdenadas;
@@ -127,6 +131,10 @@ export class Listado implements OnInit {
           }
           if (params['anio']) {
             this.filtros.anio = params['anio'];
+            this.filtrarLatas();
+          }
+          if (params['q']) {
+            this.filtros.q = params['q'].toLowerCase();
             this.filtrarLatas();
           }
         });
@@ -192,6 +200,15 @@ export class Listado implements OnInit {
 
   filtrarLatas() {
     this.latas = this.latasOriginales.filter(lata => {
+      let matchBusqueda = true;
+      if (this.filtros.q) {
+        const termino = this.filtros.q;
+        const enMarca = lata.marca?.nombre?.toLowerCase().includes(termino) || false;
+        const enSabor = lata.sabor?.nombre?.toLowerCase().includes(termino) || false;
+        const enPais = lata.pais?.nombre?.toLowerCase().includes(termino) || false;
+        const enAnio = lata.anio?.toString().includes(termino) || false;
+        matchBusqueda = enMarca || enSabor || enPais || enAnio;
+      }
       const matchMarca = this.filtros.marca ? String(lata.marca?.id) === this.filtros.marca : true;
       const matchTamano = this.filtros.tamano ? String(lata['tamaño']?.id) === this.filtros.tamano : true;
       const matchSabor = this.filtros.sabor ? String(lata.sabor?.id) === this.filtros.sabor : true;
@@ -206,14 +223,14 @@ export class Listado implements OnInit {
       const matchPais = this.filtros.pais ? String(lata.pais?.id) === this.filtros.pais : true;
       const matchCaja = this.filtros.caja ? String(lata.caja?.numeroDeCaja) === this.filtros.caja : true;
 
-      return matchMarca && matchTamano && matchSabor && matchEspecialidad && matchEdLimitada && matchEdEspecial && matchAnio && matchPais && matchCaja;
+      return matchBusqueda && matchMarca && matchTamano && matchSabor && matchEspecialidad && matchEdLimitada && matchEdEspecial && matchAnio && matchPais && matchCaja;
     });
   }
 
   limpiarFiltros() {
     this.filtros = {
       marca: '', tamano: '', sabor: '', especialidad: '',
-      edLimitada: '', edEspecial: '', anio: '', pais: '', caja: ''
+      edLimitada: '', edEspecial: '', anio: '', pais: '', caja: '', q: ''
     };
 
     this.latas = [...this.latasOriginales];

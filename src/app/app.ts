@@ -27,4 +27,12 @@ export class App implements OnInit {
     this.authService.logout();
     this.router.navigate(['/inicio']);
   }
+
+  buscar(termino: string) {
+    if (termino && termino.trim() !== '') {
+      this.router.navigate(['/latas'], { queryParams: { q: termino.trim() } });
+    } else {
+      this.router.navigate(['/latas']);
+    }
+  }
 }
