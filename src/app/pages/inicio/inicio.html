@@ -1,0 +1,45 @@
+<h1>Bienvenido a mi Coleccion</h1>
+<p>Actualmente tengo {{ cantidadLatas }} latas de {{ cantidadPaises }} paises</p>
+
+<div class="divLata">
+    <div class="lado-izquierdo">
+        <div class="divGaleriaFotos">
+            @if (lataDestacada?.foto1) { <img [src]="obtenerUrlImagen(lataDestacada?.foto1)" alt="Foto Lata"
+                [routerLink]="['/lata', lataDestacada?.id]"> }
+        </div>
+
+        <div class="divInfoLata">
+            <ul>
+                <li><strong>Marca:</strong> {{ lataDestacada?.marca?.nombre }}</li>
+                <li><strong>Tamaño:</strong> {{ lataDestacada?.['tamaño']?.volumen }} ml</li>
+                <li><strong>Sabor:</strong> {{ lataDestacada?.sabor?.nombre }}</li>
+                <li><strong>Especialidad:</strong> {{ lataDestacada?.especialidad?.nombre }}</li>
+                <li><strong>Edición Limitada:</strong> {{ lataDestacada?.edicionLimitada ? 'Sí' : 'No' }}</li>
+                @if(lataDestacada?.edicionEspecial) { <li><strong>Edición Especial:</strong> {{
+                    lataDestacada?.edicionEspecial?.nombre }}</li> }
+                @if(lataDestacada?.descripcion) { <li><strong>Descripción:</strong> {{
+                    lataDestacada?.descripcion?.texto }}</li> }
+                <li><strong>Año:</strong> {{ lataDestacada?.anio }}</li>
+                <li><strong>País:</strong> {{ lataDestacada?.pais?.nombre }}</li>
+            </ul>
+            <button class="btn-random" (click)="cargarLataRandom()">Mostrar otra lata</button>
+        </div>
+    </div>
+
+    <div class="lado-derecho">
+        <h2>Últimas Adiciones</h2>
+
+        <div class="lista-ultimas">
+            @for (lata of ultimasLatas; track lata.id) {
+            <div class="tarjeta-mini" [routerLink]="['/lata', lata.id]">
+                <img [src]="obtenerUrlImagen(lata.foto1)" alt="Miniatura">
+                <div class="info-mini">
+                    <h4>{{ lata.marca.nombre }}</h4>
+                    <p>{{ lata['tamaño'].volumen }}</p>
+                    <p>{{ lata.pais.nombre }}</p>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</div>

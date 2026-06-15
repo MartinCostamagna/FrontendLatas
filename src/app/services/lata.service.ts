@@ -36,4 +36,16 @@ export class LataService {
         });
         return this.http.patch<Lata>(`${this.apiUrl}/${id}`, datosAActualizar, { headers });
     }
+
+    obtenerLataRandom(): Observable<Lata> {
+        return this.http.get<Lata>(`${this.apiUrl}/random`);
+    }
+
+    obtenerUltimasLatas(): Observable<Lata[]> {
+        return this.http.get<Lata[]>(`${this.apiUrl}/ultimas`);
+    }
+
+    obtenerEstadisticas(): Observable<{ cantidadLatas: number, cantidadPaises: number }> {
+        return this.http.get<{ cantidadLatas: number, cantidadPaises: number }>(`${this.apiUrl}/estadisticas`);
+    }
 }

@@ -24,6 +24,7 @@ h1 {
 }
 
 .divGaleriaFotos img {
+    min-height: 460px;
     max-height: 460px;
     width: auto;
     border-radius: 8px;
