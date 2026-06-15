@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Lata, Tamano } from '../../interfaces/lata.interface';
 import { TamanoService } from '../../services/tamano.service';
 import { LataService } from '../../services/lata.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-tamanios',
@@ -19,15 +20,21 @@ export class Tamanios implements OnInit {
   //Lista de tamaños
   objetos: (Tamano & { cantidad: number })[] = [];
   latas: Lata[] = [];
+  estaLogueado: boolean = false;
 
   constructor(
     private router: Router,
     private fb: FormBuilder,
     private tamanoService: TamanoService,
     private lataService: LataService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
+    this.authService.isLoggedIn$.subscribe(estado => {
+      this.estaLogueado = estado;
+    });
+
     this.formRegistro = this.fb.group({
       volumen: ['', Validators.required]
     });

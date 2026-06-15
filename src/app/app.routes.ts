@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { Inicio } from './pages/inicio/inicio';
 import { Login } from './pages/login/login';
 import { Listado } from './pages/listado/listado';
-import { Lata } from './pages/lata/lata';
+import { LataDetalle } from './pages/lata/lata';
 import { NuevaLata } from './pages/nueva-lata/nueva-lata';
 import { Cajas } from './pages/cajas/cajas';
 import { EdicionesEspeciales } from './pages/ediciones-especiales/ediciones-especiales';
@@ -25,7 +25,7 @@ export const routes: Routes = [
     { path: 'inicio', component: Inicio },
 
     { path: 'latas', component: Listado },
-    { path: 'lata', component: Lata },
+    { path: 'lata/:id', component: LataDetalle },
 
     { path: 'NuevaLata', component: NuevaLata },
     { path: 'Marcas', component: Marcas },

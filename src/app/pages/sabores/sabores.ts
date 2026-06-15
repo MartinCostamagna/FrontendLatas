@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Lata, Sabor } from '../../interfaces/lata.interface';
 import { LataService } from '../../services/lata.service';
 import { SaborService } from '../../services/sabor.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-sabores',
@@ -19,15 +20,21 @@ export class Sabores implements OnInit {
   //Lista de sabores
   objetos: (Sabor & { cantidad: number })[] = [];
   latas: Lata[] = [];
+  estaLogueado: boolean = false;
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private saborService: SaborService,
     private lataService: LataService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
+    this.authService.isLoggedIn$.subscribe(estado => {
+      this.estaLogueado = estado;
+    });
+
     this.formRegistro = this.fb.group({
       nombre: ['', Validators.required]
     });

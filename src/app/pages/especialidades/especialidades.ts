@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Lata, Especialidad } from '../../interfaces/lata.interface';
 import { EspecialidadService } from '../../services/especialidad.service';
 import { LataService } from '../../services/lata.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-especialidades',
@@ -19,15 +20,21 @@ export class Especialidades implements OnInit {
   //Lista de especialidades
   objetos: (Especialidad & { cantidad: number })[] = [];
   latas: Lata[] = [];
+  estaLogueado: boolean = false;
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private especialidadService: EspecialidadService,
     private lataService: LataService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
+    this.authService.isLoggedIn$.subscribe(estado => {
+      this.estaLogueado = estado;
+    });
+
     this.formRegistro = this.fb.group({
       nombre: ['', Validators.required]
     });

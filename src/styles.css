@@ -71,15 +71,18 @@ body {
    color: #0000FF !important;
 }
 
-.Menu a {
+.Menu a,
+.Menu span {
    display: block;
    color: white;
    text-decoration: none;
    padding: 10px 15px;
    font-size: 20px;
+   cursor: pointer;
 }
 
-.Menu a:hover {
+.Menu a:hover,
+.Menu span:hover {
    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
 }
 

@@ -24,4 +24,16 @@ export class LataService {
     obtenerLatas(): Observable<Lata[]> {
         return this.http.get<Lata[]>(this.apiUrl);
     }
+
+    obtenerLataPorId(id: number): Observable<Lata> {
+        return this.http.get<Lata>(`${this.apiUrl}/${id}`);
+    }
+
+    actualizarLata(id: number, datosAActualizar: any): Observable<Lata> {
+        const token = localStorage.getItem('auth_token');
+        const headers = new HttpHeaders({
+            'Authorization': `Bearer ${token}`
+        });
+        return this.http.patch<Lata>(`${this.apiUrl}/${id}`, datosAActualizar, { headers });
+    }
 }

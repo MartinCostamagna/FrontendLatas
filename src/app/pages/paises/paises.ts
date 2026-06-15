@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Lata, Pais } from '../../interfaces/lata.interface';
 import { PaisService } from '../../services/pais.service';
 import { LataService } from '../../services/lata.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-paises',
@@ -19,15 +20,21 @@ export class Paises implements OnInit {
   //Lista de paises
   objetos: (Pais & { cantidad: number })[] = [];
   latas: Lata[] = [];
+  estaLogueado: boolean = false;
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private paisService: PaisService,
     private lataService: LataService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
+    this.authService.isLoggedIn$.subscribe(estado => {
+      this.estaLogueado = estado;
+    });
+
     this.formRegistro = this.fb.group({
       nombre: ['', Validators.required]
     });

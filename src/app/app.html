@@ -5,20 +5,25 @@
   <img src="Imagenes/jpg.png" alt="Icono de la página" class="logo" routerLink="/login" />
 
   <div class="Menu">
+    @if (estaLogueado) {
+    <a (click)="cerrarSesion()">Log Out</a>
+    }
     <a routerLink="/inicio">Inicio</a>
     <a routerLink="/latas">Latas</a>
     <div class="dropdown">
-      <a href="#">Nuevo ▾</a>
+      <span>Explorar ▾</span>
       <ul class="dropdown-content">
+        @if (estaLogueado) {
         <li><a routerLink="/NuevaLata">Lata</a></li>
-        <li><a routerLink="/Cajas">Caja</a></li>
-        <li><a routerLink="/Marcas">Marca</a></li>
-        <li><a routerLink="/Tamaños">Tamaño</a></li>
-        <li><a routerLink="/Sabores">Sabor</a></li>
-        <li><a routerLink="/Especialidades">Especialidad</a></li>
-        <li><a routerLink="/EdicionesEspeciales">Edicion Especial</a></li>
-        <li><a routerLink="/Paises">Pais</a></li>
-        <li><a routerLink="/Años">Año</a></li>
+        <li><a routerLink="/Cajas">Cajas</a></li>
+        }
+        <li><a routerLink="/Marcas">Marcas</a></li>
+        <li><a routerLink="/Tamaños">Tamaños</a></li>
+        <li><a routerLink="/Sabores">Sabores</a></li>
+        <li><a routerLink="/Especialidades">Especialidades</a></li>
+        <li><a routerLink="/EdicionesEspeciales">Ediciones Especiales</a></li>
+        <li><a routerLink="/Paises">Países</a></li>
+        <li><a routerLink="/Años">Años</a></li>
       </ul>
     </div>
   </div>

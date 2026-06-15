@@ -1,11 +1,13 @@
 <h1>Especialidades</h1>
 <div class="divPrincipal">
+    @if (estaLogueado) {
     <form class="formRegistro" [formGroup]="formRegistro" (ngSubmit)="guardarEspecialidad()">
         <label for="nombre" class="labelReg">Especialidad</label>
         <input type="text" id="nombre" formControlName="nombre" placeholder="Ingrese la especialidad"
             autoComplete="off">
         <button type="submit" [disabled]="formRegistro.invalid">Guardar</button>
     </form>
+    }
 
     <div class="divTabla">
         <div class="filtros">

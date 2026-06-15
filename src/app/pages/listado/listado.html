@@ -75,7 +75,7 @@
     @if (vistaActual === 'cuadricula') {
     <div class="divCuadricula">
         @for (lata of latas; track lata.id) {
-        <div class="tarjeta-lata">
+        <div class="tarjeta-lata" [routerLink]="['/lata', lata.id]">
             <div class="imagen-contenedor">
                 <img [src]="obtenerUrlImagen(lata.foto1)" alt="Lata {{ lata.marca.nombre }}">
             </div>
@@ -114,7 +114,7 @@
             </thead>
             <tbody>
                 @for (lata of latas; track lata.id) {
-                <tr>
+                <tr [routerLink]="['/lata', lata.id]">
                     <td>{{ lata.marca.nombre }}</td>
                     <td>{{ lata['tamaño'].volumen }}</td>
                     <td>{{ lata.sabor.nombre }}</td>

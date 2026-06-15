@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { Lata, Marca } from '../../interfaces/lata.interface';
 import { MarcaService } from '../../services/marca.service';
 import { LataService } from '../../services/lata.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-marcas',
@@ -19,15 +20,21 @@ export class Marcas implements OnInit {
   //Lista de marcas
   objetos: (Marca & { cantidad: number })[] = [];
   latas: Lata[] = [];
+  estaLogueado: boolean = false;
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private marcaService: MarcaService,
     private lataService: LataService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
+    this.authService.isLoggedIn$.subscribe(estado => {
+      this.estaLogueado = estado;
+    });
+
     this.formRegistro = this.fb.group({
       nombre: ['', Validators.required]
     });

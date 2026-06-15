@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Lata, EdicionEspecial } from '../../interfaces/lata.interface';
 import { EdicionEspecialService } from '../../services/edicionEspecial.service';
 import { LataService } from '../../services/lata.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-ediciones-especiales',
@@ -19,15 +20,21 @@ export class EdicionesEspeciales implements OnInit {
   //Lista de ediciones especiales
   objetos: (EdicionEspecial & { cantidad: number })[] = [];
   latas: Lata[] = [];
+  estaLogueado: boolean = false;
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private edicionEspecialService: EdicionEspecialService,
     private lataService: LataService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
+    this.authService.isLoggedIn$.subscribe(estado => {
+      this.estaLogueado = estado;
+    });
+
     this.formRegistro = this.fb.group({
       nombre: ['', Validators.required]
     });

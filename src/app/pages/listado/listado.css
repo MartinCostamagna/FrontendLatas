@@ -93,8 +93,7 @@ select:focus {
     font-size: 15px;
 }
 
-#cuadricula,
-#lista {
+.divBtnDispocision button {
     width: 85px;
     height: 25px;
     font-size: 14px;
@@ -103,7 +102,6 @@ select:focus {
     color: #0000FF;
     border: 1px solid #0000FF;
     font-weight: bold;
-    transition: all 0.2s ease;
     margin-bottom: 10px;
 }
 
@@ -115,10 +113,12 @@ select:focus {
     border-radius: 0 6px 6px 0;
 }
 
-#cuadricula.activo,
-#lista.activo {
+.divBtnDispocision button.activo,
+.divBtnDispocision button.activo:focus,
+.divBtnDispocision button.activo:active {
     background-color: #0000FF;
     color: white;
+    border: 1px solid #0000FF;
 }
 
 /* Cuadricula */
@@ -139,6 +139,13 @@ select:focus {
     text-align: center;
     font-family: Arial, sans-serif;
     color: #000;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tarjeta-lata:hover {
+    transform: translateY(-5px);
+    /* Se levanta un poquito */
 }
 
 .imagen-contenedor {
@@ -211,6 +218,10 @@ select:focus {
 
 .objetos td {
     text-align: center;
+}
+
+.objetos tbody tr {
+    cursor: pointer;
 }
 
 .objetos tbody tr:hover {

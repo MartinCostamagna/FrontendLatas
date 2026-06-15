@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Lata, Marca, Tamano, Sabor, Especialidad, EdicionEspecial, Pais } from '../../interfaces/lata.interface';
 import { LataService } from '../../services/lata.service';
 import { MarcaService } from '../../services/marca.service';
@@ -12,7 +12,7 @@ import { PaisService } from '../../services/pais.service';
 
 @Component({
   selector: 'app-listado',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './listado.html',
   styleUrl: './listado.css'
 })
