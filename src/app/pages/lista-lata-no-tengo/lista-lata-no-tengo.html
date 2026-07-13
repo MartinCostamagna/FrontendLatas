@@ -1,0 +1,37 @@
+<div class="divPrincipal">
+    <h1>Latas que no Tengo</h1>
+
+    <div class="divFiltro">
+        <select id="estado" [(ngModel)]="filtro.estado">
+            <option value="" disabled selected hidden>Todos los Estados</option>
+            <option value="En Mercado">En Mercado</option>
+            <option value="Fuera de Mercado">Fuera de Mercado</option>
+        </select>
+    </div>
+
+    <div class="divBusqueda">
+        <div class="divBtnsBusqueda">
+            <button class="btnBusqueda" (click)="filtrarLatas()">Buscar</button>
+            <button class="btnBusqueda" (click)="limpiarFiltros()">Limpiar Filtros</button>
+        </div>
+        <div class="divCantLatas">
+            <p>{{ latasNoTengo.length }} Latas</p>
+        </div>
+    </div>
+
+    <div class="divCuadricula">
+        @for (lataNoTengo of latasNoTengo; track lataNoTengo.id) {
+        <div class="tarjeta-lata" [routerLink]="['/LataNoTengo', lataNoTengo.id]">
+            <div class="imagen-contenedor">
+                <img [src]="obtenerUrlImagen(lataNoTengo.foto1)" alt="Lata {{ lataNoTengo.nombre }}">
+            </div>
+            <p class="nombre">{{ lataNoTengo.nombre }}</p>
+            <p class="estado">{{ lataNoTengo.estado }}</p>
+        </div>
+        } @empty {
+        <p style="text-align: center; grid-column: 1 / -1; margin-top: 30px;">
+            No hay latas para mostrar.
+        </p>
+        }
+    </div>
+</div>

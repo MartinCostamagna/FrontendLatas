@@ -1,0 +1,36 @@
+<h1>Registrar una Nueva Lata que no Tengo</h1>
+<form class="formRegLata" class="formRegLata" [formGroup]="formRegLata" (ngSubmit)="submitLata()">
+    <div class=" divInformacion">
+
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" autocomplete="off" placeholder="Ingrese el Nombre de la Lata"
+            formControlName="nombre" />
+
+        <label for="estado">Estado</label>
+        <select id="estado" placeholder="Seleccione un Estado" formControlName="estado">
+            <option value="" disabled selected hidden>Seleccione un Estado</option>
+            <option value="En Mercado">En Mercado</option>
+            <option value="Fuera de Mercado">Fuera de Mercado</option>
+        </select>
+    </div>
+
+    <div class="divImagen">
+        <div class="foto-card">
+            <div class="preview-box" (click)="fileInput1.click()">
+                <img *ngIf="previewFoto1" [src]="previewFoto1" class="img-preview" />
+                <div *ngIf="!previewFoto1" class="placeholder-text">
+                    <span class="icono-mas">+</span>
+                    <span>Seleccionar Foto 1</span>
+                </div>
+            </div>
+            <input #fileInput1 type="file" accept="image/*" style="display: none;"
+                (change)="onFileSelected($event, 1)" />
+            <button type="button" *ngIf="previewFoto1" class="btn-quitar-foto" (click)="removerFoto(1)">Quitar</button>
+        </div>
+    </div>
+
+    <div class="divBotones">
+        <button type="button" routerLink="/inicio">Atras</button>
+        <button type="submit" [disabled]="formRegLata.invalid">Guardar</button>
+    </div>
+</form>

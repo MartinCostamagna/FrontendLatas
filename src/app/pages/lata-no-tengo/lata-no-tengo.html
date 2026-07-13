@@ -1,0 +1,46 @@
+<h1>{{ lataSeleccionada?.nombre }} </h1>
+
+<div class="divLataContainer">
+    <div class="divGaleriaFotos">
+        @if (lataSeleccionada?.foto1) { <img [src]="obtenerUrlImagen(lataSeleccionada?.foto1)" alt="Foto 1"> }
+    </div>
+
+    @if (!modoEdicion) {
+    <div class="divInfoLata">
+        <ul>
+            <li><strong>Nombre:</strong> {{ lataSeleccionada?.nombre }}</li>
+            <li><strong>Estado:</strong> {{ lataSeleccionada?.estado }}</li>
+        </ul>
+
+        @if (estaLogueado) {
+        <div class="divBotones center-btn">
+            <button class="btn-principal" (click)="editarLata()">Editar Lata</button>
+            <button class="btn-principal" (click)="eliminarLata()">Eliminar Lata</button>
+        </div>
+        }
+    </div>
+    }
+
+    @if (modoEdicion) {
+    <div class="divEdicionLata">
+        <form>
+            <div class="divEdicionInfo">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" autocomplete="off" [(ngModel)]="lataEditada.nombre"
+                    placeholder="Ingrese el nombre de la lata" />
+
+                <label for="estado">Estado</label>
+                <select id="estado" name="estado" [(ngModel)]="lataEditada.estado">
+                    <option value="En Mercado">En Mercado</option>
+                    <option value="Fuera de Mercado">Fuera de Mercado</option>
+                </select>
+            </div>
+        </form>
+
+        <div class="divBotones form-btns">
+            <button type="button" class="btn-principal" (click)="guardarLata()">Guardar</button>
+            <button type="button" class="btn-secundario" (click)="cancelar()">Cancelar</button>
+        </div>
+    </div>
+    }
+</div>

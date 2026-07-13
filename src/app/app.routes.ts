@@ -12,6 +12,9 @@ import { Paises } from './pages/paises/paises';
 import { Tamanios } from './pages/tamanios/tamanios';
 import { Sabores } from './pages/sabores/sabores';
 import { Anios } from './pages/anios/anios';
+import { NuevaLataNoTengo } from './pages/nueva-lata-no-tengo/nueva-lata-no-tengo';
+import { ListaLataNoTengo } from './pages/lista-lata-no-tengo/lista-lata-no-tengo';
+import { LataNoTengoDetalle } from './pages/lata-no-tengo/lata-no-tengo';
 
 
 export const routes: Routes = [
@@ -35,5 +38,8 @@ export const routes: Routes = [
     { path: 'EdicionesEspeciales', component: EdicionesEspeciales },
     { path: 'Paises', component: Paises },
     { path: 'Cajas', component: Cajas },
-    { path: 'Años', component: Anios }
+    { path: 'Años', component: Anios },
+    { path: 'ListaLatasNoTengo', component: ListaLataNoTengo },
+    { path: 'NuevaLataNoTengo', component: NuevaLataNoTengo },
+    { path: 'LataNoTengo/:id', component: LataNoTengoDetalle }
 ];

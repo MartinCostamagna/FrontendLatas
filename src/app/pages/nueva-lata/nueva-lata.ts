@@ -145,8 +145,6 @@ export class NuevaLata implements OnInit {
       this.formRegLata.get('idDescripcion')?.setValue(null);
     });
 
-
-
     //Suscribe a los cambios del input de búsqueda de año
     this.anioSearchControl.valueChanges.subscribe(value => {
       this.filterData(value, 'anio');

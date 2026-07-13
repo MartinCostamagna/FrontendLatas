@@ -1,0 +1,133 @@
+.divPrincipal {
+    min-height: calc(100vh - 110px);
+}
+
+/* titulo */
+h1 {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+/* Filtro */
+.divFiltro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+/* Selects Filtros */
+select {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    height: 35px;
+    width: 250px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    padding: 6px 12px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+select:focus {
+    outline: none;
+    border-color: #0000FF;
+    box-shadow: 0 0 0 3px rgba(0, 0, 255, 0.15);
+    background-color: #fafafa;
+}
+
+.divBusqueda {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.divBtnsBusqueda {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.btnBusqueda {
+    border-radius: 6px;
+    border: 1px solid #0000FF;
+    font-family: Arial, sans-serif;
+    width: 140px;
+    height: 35px;
+    background-color: #0000FF;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btnBusqueda:hover {
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+    background-color: #0000CC;
+}
+
+.divCantLatas {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Cuadricula */
+.divCuadricula {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 30px 15px;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+/* Lata individual */
+.tarjeta-lata {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: #000;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tarjeta-lata:hover {
+    transform: translateY(-5px);
+    /* Se levanta un poquito */
+}
+
+.imagen-contenedor {
+    height: 180px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-bottom: 15px;
+}
+
+.imagen-contenedor img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.tarjeta-lata p {
+    margin: 3px 0;
+    font-size: 14px;
+}
+
+.tarjeta-lata .nombre {
+    font-weight: bold;
+    font-size: 15px;
+}

@@ -24,6 +24,10 @@
         <li><a routerLink="/EdicionesEspeciales">Ediciones Especiales</a></li>
         <li><a routerLink="/Paises">Países</a></li>
         <li><a routerLink="/Años">Años</a></li>
+        @if (estaLogueado) {
+        <li><a routerLink="/ListaLatasNoTengo">Latas que no Tengo</a></li>
+        <li><a routerLink="/NuevaLataNoTengo">Nueva Lata que no Tengo</a></li>
+        }
       </ul>
     </div>
   </div>

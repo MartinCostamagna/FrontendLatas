@@ -1,0 +1,161 @@
+:host {
+    display: block;
+    min-height: calc(100vh - 110px);
+}
+
+h1 {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+/* Div principal */
+.divLataContainer {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    align-items: stretch;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 60px;
+    padding: 0 20px 40px 20px;
+}
+
+/* Div imagenes */
+.divGaleriaFotos {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.divGaleriaFotos img {
+    min-height: 460px;
+    max-height: 460px;
+    width: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+    object-fit: cover;
+}
+
+.divGaleriaFotos img:hover {
+    transform: scale(1.05);
+}
+
+/* Div info lata */
+.divInfoLata,
+.divEdicionLata {
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: Arial, sans-serif;
+    transition: transform 0.3s ease;
+    object-fit: cover;
+}
+
+.divInfoLata:hover {
+    transform: scale(1.05);
+}
+
+.divInfoLata ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.divInfoLata li {
+    font-size: 16px;
+    color: #444;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.divInfoLata li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.divInfoLata li strong {
+    color: #0000FF;
+    display: inline-block;
+    min-width: 130px;
+}
+
+/* edicion */
+form {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Labels */
+label {
+    display: block;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #444;
+    margin-top: 10px;
+    margin-bottom: 4px;
+}
+
+/* Selects */
+input[type="text"],
+select {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    height: 40px;
+    width: 325px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    padding: 6px 12px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+select:focus {
+    outline: none;
+    border-color: #0000FF;
+    box-shadow: 0 0 0 3px rgba(0, 0, 255, 0.15);
+    background-color: #fafafa;
+}
+
+.center-btn {
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+}
+
+.form-btns {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+button {
+    font-family: Arial, sans-serif;
+    width: 160px;
+    height: 40px;
+    background-color: #0000FF;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+    background-color: #0000CC;
+}
