@@ -33,7 +33,7 @@
                         <td>{{ obj['tamañoId']?.volumen || 'N/A' }}</td>
                         <td>{{ obj.cantidadActual }}</td>
                         <td class="celda-acciones">
-                            <button class="btn-editar" (click)="cargarCajaEnFormulario(obj)">Editar</button>
+                            <button class="btn-editar" (click)="cargarCajaEnFormulario(obj, $event)">Editar</button>
                         </td>
                     </tr>
                 </tbody>

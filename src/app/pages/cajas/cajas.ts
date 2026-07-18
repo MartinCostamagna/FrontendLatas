@@ -52,7 +52,8 @@ export class Cajas implements OnInit {
     });
   }
 
-  cargarCajaEnFormulario(caja: Caja): void {
+  cargarCajaEnFormulario(caja: Caja, event: Event): void {
+    event.stopPropagation();
     this.cajaEnEdicion = caja;
 
     const idDelTamano = caja.tamañoId?.id || caja.tamañoId || '';
