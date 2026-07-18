@@ -5,7 +5,7 @@ import { Lata } from '../interfaces/lata.interface';
 
 @Injectable({ providedIn: 'root' })
 export class LataService {
-    private apiUrl = 'http://localhost:3000/latas';
+    private apiUrl = 'https://backendlatas-production.up.railway.app';
 
     constructor(private http: HttpClient) { }
 
