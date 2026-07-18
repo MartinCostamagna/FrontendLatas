@@ -5,7 +5,7 @@ import { Sabor } from '../interfaces/lata.interface';
 
 @Injectable({ providedIn: 'root' })
 export class SaborService {
-    private apiUrl = 'http://localhost:3000/sabores';
+    private apiUrl = 'https://backendlatas-production.up.railway.app/sabores';
 
     constructor(private http: HttpClient) { }
 

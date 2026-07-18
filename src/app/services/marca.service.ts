@@ -5,7 +5,7 @@ import { Marca } from '../interfaces/lata.interface';
 
 @Injectable({ providedIn: 'root' })
 export class MarcaService {
-    private apiUrl = 'http://localhost:3000/marcas';
+    private apiUrl = 'https://backendlatas-production.up.railway.app/marcas';
 
     constructor(private http: HttpClient) { }
 

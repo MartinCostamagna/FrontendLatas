@@ -5,7 +5,7 @@ import { Tamano } from '../interfaces/lata.interface';
 
 @Injectable({ providedIn: 'root' })
 export class TamanoService {
-    private apiUrl = 'http://localhost:3000/tamanos';
+    private apiUrl = 'https://backendlatas-production.up.railway.app/tamanos';
 
     constructor(private http: HttpClient) { }
 

@@ -48,7 +48,7 @@ export class ListaLataNoTengo implements OnInit {
       .map(parte => encodeURIComponent(parte))
       .join('/');
 
-    const urlBackend = 'http://localhost:3000';
+    const urlBackend = 'https://backendlatas-production.up.railway.app';
     return `${urlBackend}/static/lata-no-tengo/${rutaCodificada}`;
   }
 

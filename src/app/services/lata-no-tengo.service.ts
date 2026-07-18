@@ -5,7 +5,7 @@ import { LataNoTengo } from '../interfaces/lata-no-tengo.interface';
 
 @Injectable({ providedIn: 'root' })
 export class LataNoTengoService {
-    private apiUrl = 'http://localhost:3000/lata-no-tengo';
+    private apiUrl = 'https://backendlatas-production.up.railway.app/lata-no-tengo';
 
     constructor(private http: HttpClient) { }
 

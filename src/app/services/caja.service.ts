@@ -5,7 +5,7 @@ import { Caja } from '../interfaces/lata.interface';
 
 @Injectable({ providedIn: 'root' })
 export class CajaService {
-    private apiUrl = 'http://localhost:3000/cajas';
+    private apiUrl = 'https://backendlatas-production.up.railway.app/cajas';
 
     constructor(private http: HttpClient) { }
 

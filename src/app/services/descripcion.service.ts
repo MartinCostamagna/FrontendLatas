@@ -5,7 +5,7 @@ import { Descripcion } from '../interfaces/lata.interface';
 
 @Injectable({ providedIn: 'root' })
 export class DescripcionService {
-    private apiUrl = 'http://localhost:3000/descripciones';
+    private apiUrl = 'https://backendlatas-production.up.railway.app/descripciones';
 
     constructor(private http: HttpClient) { }
 

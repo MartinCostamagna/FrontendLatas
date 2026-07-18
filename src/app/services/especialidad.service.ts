@@ -5,7 +5,7 @@ import { Especialidad } from '../interfaces/lata.interface';
 
 @Injectable({ providedIn: 'root' })
 export class EspecialidadService {
-    private apiUrl = 'http://localhost:3000/especialidades';
+    private apiUrl = 'https://backendlatas-production.up.railway.app/especialidades';
 
     constructor(private http: HttpClient) { }
 

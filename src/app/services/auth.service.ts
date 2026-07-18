@@ -15,7 +15,7 @@ export interface AuthResponse {
     providedIn: 'root'
 })
 export class AuthService {
-    private readonly apiUrl = 'http://localhost:3000/auth';
+    private readonly apiUrl = 'https://backendlatas-production.up.railway.app/auth';
 
     private http = inject(HttpClient);
 
