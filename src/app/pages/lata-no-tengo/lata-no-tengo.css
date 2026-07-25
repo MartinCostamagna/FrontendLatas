@@ -13,6 +13,7 @@ h1 {
 /* Div principal */
 .divLataContainer {
     display: flex;
+    flex-wrap: wrap;
     gap: 40px;
     justify-content: center;
     align-items: stretch;
@@ -158,4 +159,10 @@ button {
 button:hover {
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
     background-color: #0000CC;
+}
+
+@media (max-width: 768px) {
+    .divBotones {
+        margin-top: 20px;
+    }
 }
