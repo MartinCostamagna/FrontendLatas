@@ -112,3 +112,11 @@ h1 {
     background-color: #f1f1f1;
     cursor: pointer;
 }
+
+@media (max-width: 768px) {
+    .tabla-scroll {
+        max-height: none;
+        overflow-y: visible;
+        margin-bottom: 20px;
+    }
+}
