@@ -8,6 +8,7 @@ h1 {
 /* Div principal */
 .divLataContainer {
     display: flex;
+    flex-wrap: wrap;
     gap: 40px;
     justify-content: center;
     align-items: stretch;
@@ -19,6 +20,7 @@ h1 {
 /* Div imagenes */
 .divGaleriaFotos {
     display: flex;
+    flex-wrap: wrap;
     gap: 15px;
     justify-content: center;
 }
@@ -47,6 +49,7 @@ h1 {
     min-width: 320px;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     justify-content: space-between;
     font-family: Arial, sans-serif;
     transition: transform 0.3s ease;
@@ -86,6 +89,7 @@ h1 {
 /* edicion */
 form {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     gap: 15px;
     margin-top: 20px;
@@ -155,4 +159,38 @@ button {
 button:hover {
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
     background-color: #0000CC;
+}
+
+@media (max-width: 768px) {
+    form {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .izquierda,
+    .derecha {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .izquierda label,
+    .derecha label {
+        text-align: center;
+        margin-top: 15px;
+        margin-bottom: 5px;
+    }
+
+    .izquierda select,
+    .derecha select {
+        max-width: 100%;
+    }
+
+    .form-btns {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: 20px;
+    }
 }
