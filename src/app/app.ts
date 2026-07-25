@@ -12,6 +12,7 @@ export class App implements OnInit {
   protected title = 'LatasFrontEnd';
   estaLogueado: boolean = false;
   menuAbierto: boolean = false;
+  dropdownAbierto: boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -41,7 +42,12 @@ export class App implements OnInit {
     this.menuAbierto = !this.menuAbierto;
   }
 
+  toggleDropdown() {
+    this.dropdownAbierto = !this.dropdownAbierto;
+  }
+
   cerrarMenu() {
     this.menuAbierto = false;
+    this.dropdownAbierto = false;
   }
 }

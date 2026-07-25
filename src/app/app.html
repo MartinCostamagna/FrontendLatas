@@ -12,8 +12,8 @@
     <a routerLink="/inicio" (click)="cerrarMenu()">Inicio</a>
     <a routerLink="/latas" (click)="cerrarMenu()">Latas</a>
     <div class="dropdown">
-      <span>Explorar ▾</span>
-      <ul class="dropdown-content">
+      <span (click)="toggleDropdown()">Explorar ▾</span>
+      <ul class="dropdown-content" [class.abierto]="dropdownAbierto">
         @if (estaLogueado) {
         <li><a routerLink="/NuevaLata" (click)="cerrarMenu()">Lata</a></li>
         <li><a routerLink="/Cajas" (click)="cerrarMenu()">Cajas</a></li>

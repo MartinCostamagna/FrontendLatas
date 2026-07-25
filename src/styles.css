@@ -64,10 +64,6 @@ body {
    padding: 5px 0;
 }
 
-.dropdown:hover .dropdown-content {
-   display: flex;
-}
-
 .dropdown-content a {
    color: #333333 !important;
    padding: 12px 16px;
@@ -173,6 +169,12 @@ body {
    margin-right: 10px;
 }
 
+@media (min-width: 769px) {
+   .dropdown:hover .dropdown-content {
+      display: flex;
+   }
+}
+
 @media (max-width: 768px) {
    .Buscador {
       display: none;
@@ -205,5 +207,9 @@ body {
       padding: 10px;
       width: 100%;
       text-align: center;
+   }
+
+   .dropdown-content.abierto {
+      display: flex;
    }
 }
