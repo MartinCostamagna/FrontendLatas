@@ -1,32 +1,33 @@
-<main>
-  <router-outlet></router-outlet>
-</main>
-<div class="barraSuperior">
+<nav class="barraSuperior">
   <img src="Imagenes/jpg.png" alt="Icono de la página" class="logo" routerLink="/login" />
 
-  <div class="Menu">
+  <button class="btn-hamburguesa" (click)="toggleMenu()">
+    ☰
+  </button>
+
+  <div class="Menu" [class.activo]="menuAbierto">
     @if (estaLogueado) {
     <a (click)="cerrarSesion()">Log Out</a>
     }
-    <a routerLink="/inicio">Inicio</a>
-    <a routerLink="/latas">Latas</a>
+    <a routerLink="/inicio" (click)="cerrarMenu()">Inicio</a>
+    <a routerLink="/latas" (click)="cerrarMenu()">Latas</a>
     <div class="dropdown">
       <span>Explorar ▾</span>
       <ul class="dropdown-content">
         @if (estaLogueado) {
-        <li><a routerLink="/NuevaLata">Lata</a></li>
-        <li><a routerLink="/Cajas">Cajas</a></li>
+        <li><a routerLink="/NuevaLata" (click)="cerrarMenu()">Lata</a></li>
+        <li><a routerLink="/Cajas" (click)="cerrarMenu()">Cajas</a></li>
         }
-        <li><a routerLink="/Marcas">Marcas</a></li>
-        <li><a routerLink="/Tamaños">Tamaños</a></li>
-        <li><a routerLink="/Sabores">Sabores</a></li>
-        <li><a routerLink="/Especialidades">Especialidades</a></li>
-        <li><a routerLink="/EdicionesEspeciales">Ediciones Especiales</a></li>
-        <li><a routerLink="/Paises">Países</a></li>
-        <li><a routerLink="/Años">Años</a></li>
+        <li><a routerLink="/Marcas" (click)="cerrarMenu()">Marcas</a></li>
+        <li><a routerLink="/Tamaños" (click)="cerrarMenu()">Tamaños</a></li>
+        <li><a routerLink="/Sabores" (click)="cerrarMenu()">Sabores</a></li>
+        <li><a routerLink="/Especialidades" (click)="cerrarMenu()">Especialidades</a></li>
+        <li><a routerLink="/EdicionesEspeciales" (click)="cerrarMenu()">Ediciones Especiales</a></li>
+        <li><a routerLink="/Paises" (click)="cerrarMenu()">Países</a></li>
+        <li><a routerLink="/Años" (click)="cerrarMenu()">Años</a></li>
         @if (estaLogueado) {
-        <li><a routerLink="/ListaLatasNoTengo">Latas que no Tengo</a></li>
-        <li><a routerLink="/NuevaLataNoTengo">Nueva Lata que no Tengo</a></li>
+        <li><a routerLink="/ListaLatasNoTengo" (click)="cerrarMenu()">Latas que no Tengo</a></li>
+        <li><a routerLink="/NuevaLataNoTengo" (click)="cerrarMenu()">Nueva Lata que no Tengo</a></li>
         }
       </ul>
     </div>
@@ -37,7 +38,7 @@
       (keyup.enter)="buscar(cajaBusqueda.value)" />
     <button (click)="buscar(cajaBusqueda.value)" class="btn-buscar">Buscar</button>
   </div>
-</div>
+</nav>
 
 <main class="contenido-principal">
   <router-outlet></router-outlet>
@@ -47,6 +48,6 @@
   <p>Las Latas de Martín</p>
   <div class="instagram">
     <i class="bi bi-instagram"></i>
-    <a href="https://www.instagram.com/laslatasdemartin/">Instagram</a>
+    <a href="https://www.instagram.com/laslatasdemartin/" target="_blank">Instagram</a>
   </div>
 </div>

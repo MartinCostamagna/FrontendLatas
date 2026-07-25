@@ -18,6 +18,16 @@ body {
    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
    box-sizing: border-box;
    padding: 0 20px;
+   position: relative;
+}
+
+.btn-hamburguesa {
+   display: none;
+   background: none;
+   border: none;
+   color: white;
+   font-size: 30px;
+   cursor: pointer;
 }
 
 .logo {
@@ -163,4 +173,37 @@ body {
    margin-right: 10px;
 }
 
-@media (max-width: 768px) {}
+@media (max-width: 768px) {
+   .Buscador {
+      display: none;
+   }
+
+   .btn-hamburguesa {
+      display: block;
+   }
+
+   .Menu {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      left: auto;
+      width: 220px;
+      background-color: #0000ff;
+      padding: 10px 0;
+      z-index: 50;
+      box-shadow: -2px 4px 6px rgba(0, 0, 0, 0.3);
+      border-radius: 0 0 0 8px;
+   }
+
+   .Menu.activo {
+      display: flex;
+   }
+
+   .Menu .enlace {
+      padding: 10px;
+      width: 100%;
+      text-align: center;
+   }
+}

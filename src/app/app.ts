@@ -11,6 +11,7 @@ import { AuthService } from './services/auth.service';
 export class App implements OnInit {
   protected title = 'LatasFrontEnd';
   estaLogueado: boolean = false;
+  menuAbierto: boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -34,5 +35,13 @@ export class App implements OnInit {
     } else {
       this.router.navigate(['/latas']);
     }
+  }
+
+  toggleMenu() {
+    this.menuAbierto = !this.menuAbierto;
+  }
+
+  cerrarMenu() {
+    this.menuAbierto = false;
   }
 }
