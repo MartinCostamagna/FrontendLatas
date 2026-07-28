@@ -46,18 +46,11 @@ export class Inicio implements OnInit {
     });
   }
 
-  obtenerUrlImagen(rutaParcial: string | null | undefined): string {
-    if (!rutaParcial) {
+  obtenerUrlImagen(rutaUrl: string | null | undefined): string {
+    if (!rutaUrl) {
       return 'assets/imagen-por-defecto.png';
     }
 
-    const rutaLimpia = rutaParcial.replace(/\\/g, '/');
-    const rutaCodificada = rutaLimpia
-      .split('/')
-      .map(parte => encodeURIComponent(parte))
-      .join('/');
-
-    const urlBackend = 'https://backendlatas-production.up.railway.app';
-    return `${urlBackend}/static/imagenes/${rutaCodificada}`;
+    return rutaUrl;
   }
 }
